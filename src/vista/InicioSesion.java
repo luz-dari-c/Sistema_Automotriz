@@ -5,9 +5,14 @@
 package vista;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.userSearch;
+import model.Sesion;
 import sombra.textoSombra;
+import model.UsuarioDao;
+import model.usuarios;
 
 
 public class InicioSesion extends javax.swing.JFrame {
@@ -18,7 +23,7 @@ public class InicioSesion extends javax.swing.JFrame {
          setLocationRelativeTo(null);
          
         
-        textoSombra usuario = new textoSombra( "Correo" , txtuser);
+        textoSombra usuario = new textoSombra( "Usuario" , txtuser);
         textoSombra contraseña = new textoSombra( "Contraseña" , txtpassword);
 
     }
@@ -51,6 +56,8 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtuser = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        show = new javax.swing.JLabel();
+        hidden = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -149,6 +156,11 @@ public class InicioSesion extends javax.swing.JFrame {
         ));
         txtpassword.setForeground(new java.awt.Color(0, 0, 0));
         txtpassword.setBorder(null);
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
         txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtpasswordKeyPressed(evt);
@@ -174,6 +186,25 @@ public class InicioSesion extends javax.swing.JFrame {
         });
         jPanel5.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 290, 40));
         jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 320, 10));
+
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/view.png"))); // NOI18N
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMouseClicked(evt);
+            }
+        });
+        jPanel5.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 50, 40));
+
+        hidden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hide (1).png"))); // NOI18N
+        hidden.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hiddenMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                hiddenMouseReleased(evt);
+            }
+        });
+        jPanel5.add(hidden, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 40, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,41 +244,42 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_botonIngresarMouseExited
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-    String USERNAME = "Admin2007";
-    String PASSWORD = "Admin123";
-    
-    String usuario = txtuser.getText().trim();  // Cambiado aquí
-    String contraseña = new String(txtpassword.getPassword()).trim();
-    
-    if (usuario.equals("Admin2007") && contraseña.equals("Admin123")){
-        adminview admin = new adminview();
-        admin.setVisible(true);
-        this.dispose();
-    }
+  String usuarioAdmin = "Administrador";
+    String contraseñaAdmin = "Admin";  
 
-    if (usuario.isEmpty() || contraseña.isEmpty()){
-        JOptionPane.showMessageDialog(null, "Por favor complete los campos");
-        return;
-    } 
-    
-    
-    
-    userSearch search = new userSearch();
-    boolean acceso = search.accesoUsuario(usuario, contraseña);
-    
-    if (acceso) {
-        pruebaPrincipal pBAcesso = new pruebaPrincipal();
-        pBAcesso.setVisible(true);
-        this.dispose();
+    String username = txtuser.getText();
+    String password = new String(txtpassword.getPassword());
+
+    UsuarioDao userDao = new UsuarioDao();   
+    usuarios usuarioActual = userDao.getUsuario(username, password); // Obtén el usuario
+
+    if (username.equals(usuarioAdmin) && password.equals(contraseñaAdmin)) {
+      try {
+          adminview adminDashboard = new adminview();
+          adminDashboard.setVisible(true);
+          this.dispose();
+      } catch (SQLException ex) {
+          Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    } else if (usuarioActual != null) { 
+        Sesion.iniciarSesion(usuarioActual); 
+
+        String identificacionUsuario = usuarioActual.getIdentificacion(); // Obtén la identificación del usuario
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new pruebaPrincipal(identificacionUsuario).setVisible(true); // Pasa la identificación
+                } catch (SQLException ex) {
+                    Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+        this.dispose(); 
     } else {
-        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Intente de nuevo.");
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta", "Error de Login", JOptionPane.ERROR_MESSAGE);
     }
-
-
-
-        
-        
-
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void registreseAquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registreseAquiActionPerformed
@@ -275,6 +307,26 @@ public class InicioSesion extends javax.swing.JFrame {
     private void botonIngresarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botonIngresarKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_botonIngresarKeyReleased
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+        show.setVisible(false);
+        hidden.setVisible(true);
+        txtpassword.setEchoChar('*');
+    }//GEN-LAST:event_showMouseClicked
+
+    private void hiddenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenMousePressed
+        show.setVisible(true);
+        hidden.setVisible(false);
+        txtpassword.setEchoChar((char) 0);
+    }//GEN-LAST:event_hiddenMousePressed
+
+    private void hiddenMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenMouseReleased
+
+    }//GEN-LAST:event_hiddenMouseReleased
 
     /**
      * @param args the command line arguments
@@ -313,6 +365,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonIngresar;
+    private javax.swing.JLabel hidden;
     private javax.swing.JLabel ingreseUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -327,6 +380,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel panelAzulFondoCarro;
     private javax.swing.JButton registreseAqui;
+    private javax.swing.JLabel show;
     private javax.swing.JLabel txtAunNotieneCuenta;
     private javax.swing.JLabel txtContraseña;
     private javax.swing.JPasswordField txtpassword;

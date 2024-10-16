@@ -2,6 +2,7 @@ package model;
 
 public class car {
     
+    private int id; 
     private String marca;
     private String modelo;
     private String año;
@@ -11,7 +12,24 @@ public class car {
     private String kilometraje;
     private String fechaIngresoo;
     private String placa;
+    private int cantidad;
 
+    
+    public car(int id, String marca, String modelo, String año, Double precio, String color, String tipoMotor, String kilometraje, String fechaIngresoo, String placa, int cantidad) {
+        this.id = id; 
+        this.marca = marca;
+        this.modelo = modelo;
+        this.año = año;
+        this.precio = precio;
+        this.color = color;
+        this.tipoMotor = tipoMotor;
+        this.kilometraje = kilometraje;
+        this.fechaIngresoo = fechaIngresoo;
+        this.placa = placa;
+        this.cantidad = cantidad;
+    }
+
+ 
     public String getMarca() {
         return marca;
     }
@@ -84,5 +102,15 @@ public class car {
         this.placa = placa;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
 
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getId() {
+        return id; 
+    }
 }

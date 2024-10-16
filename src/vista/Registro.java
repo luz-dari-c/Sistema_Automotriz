@@ -18,23 +18,23 @@ public class Registro extends javax.swing.JFrame {
    
     public Registro() {
         initComponents();
+         setLocationRelativeTo(null); 
         
-        
-        textoSombra correo = new textoSombra("Ingrese su correo", inputcorreo);
+        textoSombra correo = new textoSombra("Correo", inputCorreo);
         setResizable(true);
-        textoSombra nombre = new textoSombra("Ingrese su nombre", inputNombre);
-        setResizable(true);
-        
-         textoSombra id = new textoSombra("Ingrese su identificacion", inputIdentificacion);
+        textoSombra nombre = new textoSombra("Nombre", inputNombre);
         setResizable(true);
         
-         textoSombra apellido = new textoSombra("Ingrese su apellido", inputApellido);
+         textoSombra id = new textoSombra("Identificacion", inputIdentificacion);
         setResizable(true);
         
-        textoSombra user = new textoSombra("Ingrese su user", inputUsuario);
+         textoSombra apellido = new textoSombra("Apellido", inputApellido);
+        setResizable(true);
+        
+        textoSombra user = new textoSombra("User", inputUsuario);
         setResizable(true);
 
-        textoSombra contraseña = new textoSombra("Ingrese su contraseña", inputContraseña);
+        textoSombra contraseña = new textoSombra("Contraseña", inputContraseña);
         setResizable(true);
     }
 
@@ -50,7 +50,6 @@ public class Registro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtUnete = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JLabel();
-        inputcorreo = new javax.swing.JTextField();
         txtNombre = new javax.swing.JLabel();
         inputUsuario = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JLabel();
@@ -62,11 +61,10 @@ public class Registro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        mostrarContra = new java.awt.Checkbox();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        inputNombre = new javax.swing.JTextField();
+        inputCorreo = new javax.swing.JTextField();
         txtNombre1 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         inputApellido = new javax.swing.JTextField();
@@ -80,6 +78,9 @@ public class Registro extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtNombre3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        inputNombre = new javax.swing.JTextField();
+        show = new javax.swing.JLabel();
+        hidden = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,23 +95,6 @@ public class Registro extends javax.swing.JFrame {
         txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setText("Ingrese su correo electronico");
         jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 170, 20));
-
-        inputcorreo.setBackground(new java.awt.Color(0, 0, 0, 0));
-        inputcorreo.setForeground(new java.awt.Color(51, 51, 51));
-        inputcorreo.setBorder(null);
-        inputcorreo.setCaretColor(new java.awt.Color(0, 0, 51));
-        inputcorreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        inputcorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputcorreoActionPerformed(evt);
-            }
-        });
-        inputcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                inputcorreoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(inputcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 290, 30));
 
         txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre.setText("Ingrese su user");
@@ -161,9 +145,6 @@ public class Registro extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 320, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 320, 10));
 
-        mostrarContra.setLabel("Mostar contraseña");
-        jPanel1.add(mostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, -1, -1));
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Imagen de WhatsApp 2024-09-19 a las 14.46.04_8cb85dea.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 30, 30));
 
@@ -173,15 +154,20 @@ public class Registro extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Imagen de WhatsApp 2024-09-19 a las 14.48.05_f14395a5.jpg"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 40, 30));
 
-        inputNombre.setBackground(new java.awt.Color(0, 0, 0, 0));
-        inputNombre.setForeground(new java.awt.Color(51, 51, 51));
-        inputNombre.setBorder(null);
-        inputNombre.addActionListener(new java.awt.event.ActionListener() {
+        inputCorreo.setBackground(new java.awt.Color(0, 0, 0, 0));
+        inputCorreo.setForeground(new java.awt.Color(51, 51, 51));
+        inputCorreo.setBorder(null);
+        inputCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputNombreActionPerformed(evt);
+                inputCorreoActionPerformed(evt);
             }
         });
-        jPanel1.add(inputNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 290, 30));
+        inputCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputCorreoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(inputCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 290, 30));
 
         txtNombre1.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre1.setText("Ingrese su nombre");
@@ -194,6 +180,11 @@ public class Registro extends javax.swing.JFrame {
         inputApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputApellidoActionPerformed(evt);
+            }
+        });
+        inputApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputApellidoKeyTyped(evt);
             }
         });
         jPanel1.add(inputApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 290, 30));
@@ -242,6 +233,40 @@ public class Registro extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 130, 30));
 
+        inputNombre.setBackground(new java.awt.Color(0, 0, 0, 0));
+        inputNombre.setForeground(new java.awt.Color(51, 51, 51));
+        inputNombre.setBorder(null);
+        inputNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNombreActionPerformed(evt);
+            }
+        });
+        inputNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inputNombreKeyTyped(evt);
+            }
+        });
+        jPanel1.add(inputNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 290, 30));
+
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/view.png"))); // NOI18N
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMouseClicked(evt);
+            }
+        });
+        jPanel1.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 30, 30));
+
+        hidden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hide (1).png"))); // NOI18N
+        hidden.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hiddenMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                hiddenMouseReleased(evt);
+            }
+        });
+        jPanel1.add(hidden, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, -1, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -266,17 +291,13 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputcorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputcorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputcorreoActionPerformed
-
     private void inputUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputUsuarioActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_inputUsuarioActionPerformed
 
-    private void inputNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombreActionPerformed
+    private void inputCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCorreoActionPerformed
 
-    }//GEN-LAST:event_inputNombreActionPerformed
+    }//GEN-LAST:event_inputCorreoActionPerformed
 
     private void inputApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApellidoActionPerformed
         // TODO add your handling code here:
@@ -288,44 +309,48 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                        
-    String correo = inputcorreo.getText();
-    String nombre = inputNombre.getText();
+    String correo = inputCorreo.getText();
+    String nombre = inputCorreo.getText();
     String apellido = inputApellido.getText();
     String identificacion = inputIdentificacion.getText();
     String user = inputUsuario.getText();
-    String contraseña = new String(inputContraseña.getPassword()); // Corrección aquí
+    String contraseña = new String(inputContraseña.getPassword()); 
 
-    userController controlador = new userController(); // Eliminar duplicado
+    userController controlador = new userController(); 
 
     if (correo.isEmpty() || nombre.isEmpty() || apellido.isEmpty() ||
         identificacion.isEmpty() || user.isEmpty() || contraseña.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Llene todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
+    
 
+   
+    
+    
     boolean registrado = controlador.registroUsuario(correo, nombre, apellido, identificacion, user, contraseña);
 
     if (registrado) {
-        JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente.");
         new InicioSesion().setVisible(true);
     } else {
         JOptionPane.showMessageDialog(this, "Error al registrar el usuario. Inténtelo de nuevo.");
+    }
+    
+    if (correo.contains("@") && correo.endsWith(".com")){
+} else {
+    JOptionPane.showMessageDialog(null, "Por favor, ingrese un email valido.");
+    
+     
+    
     }
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void inputcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputcorreoKeyTyped
-        
-        char c = evt.getKeyChar();
-        
-        if (c < 0 || c > 9) evt.consume();
-            
-        
-    }//GEN-LAST:event_inputcorreoKeyTyped
-
+    
     private void inputIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputIdentificacionKeyTyped
-          char c = evt.getKeyChar();
+          
+        char c = evt.getKeyChar();
             
             
             if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
@@ -334,6 +359,54 @@ public class Registro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Solo se permiten números en este campo.", "Error", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_inputIdentificacionKeyTyped
+
+    private void inputCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCorreoKeyTyped
+ 
+
+    }//GEN-LAST:event_inputCorreoKeyTyped
+
+    private void inputApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputApellidoKeyTyped
+        char c = evt.getKeyChar();
+            
+            
+            if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+                evt.consume();
+                
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras en este campo.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+    }//GEN-LAST:event_inputApellidoKeyTyped
+
+    private void inputNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNombreActionPerformed
+
+    private void inputNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreKeyTyped
+        char c = evt.getKeyChar();
+            
+            
+            if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+                evt.consume();
+                
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras en este campo.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+    }               
+    }//GEN-LAST:event_inputNombreKeyTyped
+
+    private void hiddenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenMousePressed
+       show.setVisible(true);
+       hidden.setVisible(false);
+       inputContraseña.setEchoChar((char) 0);
+    }//GEN-LAST:event_hiddenMousePressed
+
+    private void hiddenMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenMouseReleased
+     
+    }//GEN-LAST:event_hiddenMouseReleased
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+          show.setVisible(false);
+    hidden.setVisible(true);
+    inputContraseña.setEchoChar('*'); 
+    }//GEN-LAST:event_showMouseClicked
 
     /**
      * @param args the command line arguments
@@ -371,12 +444,13 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hidden;
     private javax.swing.JTextField inputApellido;
     private javax.swing.JPasswordField inputContraseña;
+    private javax.swing.JTextField inputCorreo;
     private javax.swing.JTextField inputIdentificacion;
     private javax.swing.JTextField inputNombre;
     private javax.swing.JTextField inputUsuario;
-    private javax.swing.JTextField inputcorreo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -396,7 +470,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private java.awt.Checkbox mostrarContra;
+    private javax.swing.JLabel show;
     private javax.swing.JLabel txtContraseña;
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JLabel txtNombre;

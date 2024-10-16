@@ -4,6 +4,8 @@
  */
 package proaula;
 
+import vista.InicioSesion;
+
 /**
  *
  * @author gameV
@@ -14,7 +16,7 @@ public class Proaula {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        InicioSesion mostrarPrincipal = new InicioSesion();
     }
     
 }
