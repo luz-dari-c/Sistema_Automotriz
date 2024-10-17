@@ -981,11 +981,11 @@ public class pruebaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cierre de sesión cancelado.");
        
     }//GEN-LAST:event_CierreSesionActionPerformed
-    }
+    
    
     
     
-    
+    }
     
     public static void main(String args[]) {
        
