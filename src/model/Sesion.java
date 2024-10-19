@@ -1,18 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
 
 public class Sesion {
-    private static usuarios usuarioActual; 
+    private static Usuario usuarioActual; 
 
-    public static void iniciarSesion(usuarios usuario) {
+    public static void iniciarSesion(Usuario usuario) {
         usuarioActual = usuario; 
     }
 
-    public static usuarios getUsuarioActual() {
+    public static Usuario getUsuarioActual() {
         return usuarioActual; 
     }
 

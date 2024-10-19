@@ -1,7 +1,5 @@
 
 package model;
-
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -9,7 +7,7 @@ import java.util.Date;
 public class Compra {
     private String nombreAuto;
     private BigDecimal precioAuto;
-   private Timestamp fechaCompra; 
+    private Timestamp fechaCompra; 
     private BigDecimal total;
     private int cantidad;
     private String nombreUsuario;  
