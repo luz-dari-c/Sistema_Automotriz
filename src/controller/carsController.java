@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.ConexionBD;
-import model.car;
+import model.Carro;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
@@ -46,8 +46,8 @@ public class carsController {
          
      }
     
-    public car obtenerDatosCarro(String modeloCarro) {
-    car carro = null;
+    public Carro obtenerDatosCarro(String modeloCarro) {
+    Carro carro = null;
     try {
         // Conexión a la base de datos
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventario_autos", "root", "");
@@ -58,7 +58,7 @@ public class carsController {
 
         // Si se encuentra el carro, almacenar sus datos
         if (rs.next()) {
-            carro = new car(
+            carro = new Carro(
                 rs.getInt("id_auto"),                // ID del carro (nuevo parámetro)
                 rs.getString("marca"),          // Marca del carro
                 rs.getString("modelo"),         // Modelo del carro
