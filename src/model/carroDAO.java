@@ -13,8 +13,8 @@ import java.sql.Timestamp;
 
 public class carroDAO {
 
-    public List<car> obtenerCarros() {
-        List<car> cars = new ArrayList<>();
+public List<Carro> obtenerCarros() {
+        List<Carro> cars = new ArrayList<>();
         String sql = "SELECT marca, modelo, año, precio, color, tipo_motor, fecha_ingreso, kilometraje, placa, cantidad FROM autos";
 
         try (Connection con = ConexionBD.conectar(); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
@@ -32,7 +32,7 @@ public class carroDAO {
                 String placa = rs.getString("placa");
                 int cantidad = rs.getInt("cantidad");
 
-                car carr = new car (cantidad, marca, modelo, año, precio, color, tipoMotor, kilometraje, fechaIngresoo, placa, cantidad);
+                Carro carr = new Carro (cantidad, marca, modelo, año, precio, color, tipoMotor, kilometraje, fechaIngresoo, placa, cantidad);
 
                 cars.add(carr);
             }
@@ -44,7 +44,7 @@ public class carroDAO {
         return cars;
     }
 
-   public void disminuirCantidadCarro(String modelo) {
+public void disminuirCantidadCarro(String modelo) {
     String sql = "UPDATE autos SET cantidad = cantidad - 1 WHERE modelo = ? AND cantidad > 0";
 
     try (Connection con = ConexionBD.conectar(); PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -63,8 +63,7 @@ public class carroDAO {
     }
 }
 
-
-    public void aumentarCantidad(String modelo) {
+public void aumentarCantidad(String modelo) {
 
         String sql = "UPDATE autos SET cantidad = cantidad + 1 WHERE modelo = ?";
 
@@ -87,43 +86,68 @@ public void ventacarro(String nombreAuto, double precio, int idUsuario, int idAu
     String nombreUsuario = null; 
     String identificacion = null; 
     String placaGenerada = PlacaCarro.generarPlacaUnica();
+    String TipoMotorAuto = null; 
+    String Color = null;
 
     String queryUsuario = "SELECT nombre, identificacion FROM usuarios WHERE id = ?";
     
     try (Connection con = ConexionBD.conectar();
          PreparedStatement psUsuario = con.prepareStatement(queryUsuario)) {
         psUsuario.setInt(1, idUsuario);
-        ResultSet rs = psUsuario.executeQuery();
+        ResultSet rsUsuario = psUsuario.executeQuery();
         
-        if (rs.next()) {
-            nombreUsuario = rs.getString("nombre");
-            identificacion = rs.getString("identificacion");
+        if (rsUsuario.next()) {
+            nombreUsuario = rsUsuario.getString("nombre");
+            identificacion = rsUsuario.getString("identificacion");
         }
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
-    String query = "INSERT INTO compras (nombre_auto, precio_auto, id_usuario, id_auto, fecha_compra, total, cantidad, nombre_usuario, identificacion, placa) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?,?)";
+    
+    String queryCarro = "SELECT tipo_motor, color FROM autos WHERE id_auto = ?";
     
     try (Connection con = ConexionBD.conectar();
-         PreparedStatement ps = con.prepareStatement(query)) {
-        ps.setString(1, nombreAuto);
-        ps.setDouble(2, precio);
-        ps.setInt(3, idUsuario);
-        ps.setInt(4, idAuto);
-        ps.setDouble(5, precio);
-        ps.setInt(6, 1); 
-        ps.setString(7, nombreUsuario);
-        ps.setString(8, identificacion);
-         ps.setString(9, placaGenerada);
-        ps.executeUpdate();
+         PreparedStatement psCarro = con.prepareStatement(queryCarro)) {
+        psCarro.setInt(1, idAuto);
+        ResultSet rsCarro = psCarro.executeQuery();
+        
+
+        
+    if (rsCarro.next()) {
+        TipoMotorAuto = rsCarro.getString("tipo_motor");
+        Color = rsCarro.getString("color");
+        System.out.println("Tipo de motor recuperado: " + TipoMotorAuto);
+        System.out.println("Color recuperado: " + Color);
+    } else {
+        System.err.println("No se encontró el carro con el id: " + idAuto);
+    }
+        
+        
     } catch (SQLException e) {
         e.printStackTrace();
     }
 
-   
-}
+    
+    String query = "INSERT INTO compras (nombre_auto, precio_auto, id_usuario, id_auto, fecha_compra, total, cantidad, nombre_usuario, identificacion, placa, tipo_motor_auto, color_auto) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
 
+try (Connection con = ConexionBD.conectar();
+     PreparedStatement ps = con.prepareStatement(query)) {
+    ps.setString(1, nombreAuto);               
+    ps.setDouble(2, precio);                   
+    ps.setInt(3, idUsuario);                   
+    ps.setInt(4, idAuto);                       
+    ps.setDouble(5, precio);                    // total
+    ps.setInt(6, 1);                            // cantidad
+    ps.setString(7, nombreUsuario);             // nombre_usuario
+    ps.setString(8, identificacion);            // identificacion
+    ps.setString(9, placaGenerada);             // placa
+    ps.setString(10, TipoMotorAuto);            // tipo_motor_auto
+    ps.setString(11, Color);                    // color_auto
+    ps.executeUpdate();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+}
 
 
 public void registrarCompra(int id_usuario, int id_auto, String nombre_auto, double precio_auto, double total, int cantidad, String placa) {
@@ -188,7 +212,7 @@ public boolean actualizarCantidadCarro(int idAuto, int nuevaCantidad) throws SQL
 public List<Compra> obtenerAutosVendidos() throws SQLException {
     List<Compra> compras = new ArrayList<>();
     String query = """
-        SELECT c.nombre_auto, c.precio_auto, c.fecha_compra, c.total, c.cantidad, u.nombre, u.apellido, u.identificacion, c.placa
+        SELECT c.nombre_auto, c.precio_auto, c.fecha_compra, c.color_auto, c.tipo_motor_auto, c.total, c.cantidad, u.nombre, u.apellido, u.identificacion, c.placa
         FROM compras c
         JOIN usuarios u ON c.id_usuario = u.id
     """;
@@ -206,10 +230,12 @@ public List<Compra> obtenerAutosVendidos() throws SQLException {
             String nombreUsuario = rs.getString("nombre");
             String apellidoUsuario = rs.getString("apellido"); 
             String identificacionUsuario = rs.getString("identificacion");
-            String placa = rs.getString("placa"); 
+            String placa = rs.getString("placa");
+            String TipoMotorAuto = rs.getString("tipo_motor_auto");
+            String Color = rs.getString("color_auto");
 
            
-            Compra compra = new Compra(nombreAuto, precioAuto, fechaCompra, total, cantidad, nombreUsuario, apellidoUsuario, identificacionUsuario, placa);
+            Compra compra = new Compra(nombreAuto, precioAuto, fechaCompra, total, cantidad, nombreUsuario, apellidoUsuario, identificacionUsuario, placa, TipoMotorAuto, Color);
             compras.add(compra);
         }
     }
@@ -221,7 +247,7 @@ public List<Compra> obtenerAutosVendidos() throws SQLException {
 public List<Compra> obtenerComprasPorUsuario(String identificacionUsuario) throws SQLException {
     List<Compra> compras = new ArrayList<>();
     String query = """
-        SELECT c.nombre_auto, c.precio_auto, c.fecha_compra, c.total, c.cantidad, u.nombre AS nombre_usuario, u.apellido AS apellido_usuario, u.identificacion AS identificacion_usuario, c.placa
+        SELECT c.nombre_auto, c.precio_auto, c.fecha_compra,c.color_auto, c.tipo_motor_auto, c.total, c.cantidad, u.nombre AS nombre_usuario, u.apellido AS apellido_usuario, u.identificacion AS identificacion_usuario, c.placa
         FROM compras c
         JOIN usuarios u ON c.id_usuario = u.id
         WHERE u.identificacion = ?
@@ -233,26 +259,87 @@ public List<Compra> obtenerComprasPorUsuario(String identificacionUsuario) throw
         
         ResultSet rs = ps.executeQuery();
         
-        while (rs.next()) {
-            String nombreAuto = rs.getString("nombre_auto");
-            BigDecimal precioAuto = rs.getBigDecimal("precio_auto");
-            Timestamp fechaCompra = rs.getTimestamp("fecha_compra");
-            BigDecimal total = rs.getBigDecimal("total");
-            int cantidad = rs.getInt("cantidad");
-            String nombreUsuario = rs.getString("nombre_usuario");
-            String apellidoUsuario = rs.getString("apellido_usuario");
-            String identificacionUsuarioResult = rs.getString("identificacion_usuario");
-            String placa = rs.getString("placa");
-
-          
-            Compra compra = new Compra(nombreAuto, precioAuto, fechaCompra, total, cantidad, nombreUsuario, apellidoUsuario, identificacionUsuarioResult, placa);
-            compras.add(compra);
-        }
+       while (rs.next()) {
+    String nombreAuto = rs.getString("nombre_auto");
+    BigDecimal precioAuto = rs.getBigDecimal("precio_auto");
+    Timestamp fechaCompra = rs.getTimestamp("fecha_compra");
+    BigDecimal total = rs.getBigDecimal("total");
+    int cantidad = rs.getInt("cantidad");
+    String nombreUsuario = rs.getString("nombre_usuario");
+    String apellidoUsuario = rs.getString("apellido_usuario");
+    String identificacionUsuarioResult = rs.getString("identificacion_usuario");
+    String placa = rs.getString("placa");
+    String color = rs.getString("color_auto"); 
+    String tipoMotorAuto = rs.getString("tipo_motor_auto");  
+    
+    Compra compra = new Compra(nombreAuto, precioAuto, fechaCompra, total, cantidad, nombreUsuario, apellidoUsuario, identificacionUsuarioResult, placa, color, tipoMotorAuto);
+    compras.add(compra);
+}
     }
 
     return compras;
 }
 
+public boolean carroEncontrado(String placa, String modelo){ 
+        ConexionBD db = new ConexionBD();
+        boolean encontrado = false;
+        
+        try{
+            Connection cn = db.conectar();
+            String sql = "SELECT carro  FROM autos WHERE carro = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, placa);
+            pst.setString(2, modelo);
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                encontrado = true;
+            }
+        
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        
+        }
+        return encontrado;
+      
+   }
+
+public void eliminarAuto(String inputPlacaAutoEliminar) {
+        ConexionBD db = new ConexionBD(); 
+        Connection con = null;  
+        PreparedStatement pst = null; 
+        
+        String query = "DELETE FROM autos WHERE placa = ?";
+        
+        try {
+            con = db.conectar();  
+            if (con != null) {   
+                pst = con.prepareStatement(query);  
+                pst.setString(1, inputPlacaAutoEliminar);  
+                int filasEliminadas = pst.executeUpdate();  
+                if (filasEliminadas > 0) {
+                    
+                    JOptionPane.showMessageDialog(null, "El auto con placa " + inputPlacaAutoEliminar + " fue eliminado correctamente.");
+                  
+                } else {
+                    JOptionPane.showMessageDialog(null,"No se encontró ningún auto con la placa " + inputPlacaAutoEliminar);
+                    
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro al eliminar el auto: " + e.getMessage());
+
+        } finally {
+           
+            try {
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
+
+                           }
+        }
+    }
 }
 
 

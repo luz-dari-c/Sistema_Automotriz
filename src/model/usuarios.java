@@ -1,7 +1,7 @@
 package model;
 
 public class usuarios {
-    private int id; // Agrega el ID del usuario
+    private int id; 
     private String nombre;
     private String apellidos;
     private String identificacion;

@@ -1,10 +1,8 @@
 
 package model;
-
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 public class Compra {
     private String nombreAuto;
@@ -16,27 +14,9 @@ public class Compra {
     private String apellidoUsuario;
     private String identificacionUsuario; 
     private String Placa;
+    private String color; 
+    private String tipoMotor;
 
-   
-    public Compra(String nombreAuto, BigDecimal precioAuto, Timestamp fechaCompra, BigDecimal total, int cantidad, String nombreUsuario, String apellidoUsuario, String identificacionUsuario, String Placa) {
-        this.nombreAuto = nombreAuto;
-        this.precioAuto = precioAuto;
-        this.fechaCompra = fechaCompra;
-        this.total = total;
-        this.cantidad = cantidad;
-        this.nombreUsuario = nombreUsuario;   
-        this.apellidoUsuario = apellidoUsuario;
-        this.identificacionUsuario = identificacionUsuario;  
-        this.Placa = Placa;
-    }
- public String getPlaca(){
-     return Placa;
- }
- 
- public String getApellidoUsuario(){
-     return apellidoUsuario;
- }
- 
     public String getNombreAuto() {
         return nombreAuto;
     }
@@ -45,7 +25,7 @@ public class Compra {
         return precioAuto;
     }
 
-    public Date getFechaCompra() {
+    public Timestamp getFechaCompra() {
         return fechaCompra;
     }
 
@@ -57,11 +37,42 @@ public class Compra {
         return cantidad;
     }
 
-    public String getNombreUsuario() {              
+    public String getNombreUsuario() {
         return nombreUsuario;
     }
 
-    public String getIdentificacionUsuario() {       
+    public String getApellidoUsuario() {
+        return apellidoUsuario;
+    }
+
+    public String getIdentificacionUsuario() {
         return identificacionUsuario;
+    }
+
+    public String getPlaca() {
+        return Placa;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getTipoMotor() {
+        return tipoMotor;
+    }
+
+   
+    public Compra(String nombreAuto, BigDecimal precioAuto, Timestamp fechaCompra, BigDecimal total, int cantidad, String nombreUsuario, String apellidoUsuario, String identificacionUsuario, String Placa, String color, String TipoMotor) {
+        this.nombreAuto = nombreAuto;
+        this.precioAuto = precioAuto;
+        this.fechaCompra = fechaCompra;
+        this.total = total;
+        this.cantidad = cantidad;
+        this.nombreUsuario = nombreUsuario;   
+        this.apellidoUsuario = apellidoUsuario;
+        this.identificacionUsuario = identificacionUsuario;  
+        this.Placa = Placa;
+        this.color = color;
+        this.tipoMotor = TipoMotor;
     }
 }
