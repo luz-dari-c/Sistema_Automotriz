@@ -72,7 +72,9 @@ public class compraFase extends javax.swing.JFrame {
         if (carroSeleccionado != null) {
           
             modeloLabel.setText(carroSeleccionado.getModelo()); 
-            añoLabel.setText(carroSeleccionado.getAño()); 
+            añoLabel.setText(String.valueOf(carroSeleccionado.getAño()));
+
+           // Convierte a int
             double precio = carroSeleccionado.getPrecio();
             precioLabel.setText(String.format("%.2f", precio)); 
             colorLabel.setText(carroSeleccionado.getColor()); 
@@ -145,158 +147,83 @@ public class compraFase extends javax.swing.JFrame {
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, 20));
 
         panelCompra.setBackground(new java.awt.Color(204, 204, 204));
+        panelCompra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(51, 0, 0));
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Precio:");
+        panelCompra.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 31, 99, -1));
 
         jLabel4.setBackground(new java.awt.Color(51, 0, 0));
         jLabel4.setForeground(new java.awt.Color(51, 0, 0));
         jLabel4.setText("Modelo:");
+        panelCompra.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 91, 89, -1));
 
         jLabel6.setForeground(new java.awt.Color(51, 0, 0));
         jLabel6.setText("Año: ");
+        panelCompra.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 146, 37, -1));
 
         jLabel8.setForeground(new java.awt.Color(51, 0, 0));
         jLabel8.setText("Color:");
+        panelCompra.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 198, 37, -1));
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 208, 91, -1));
 
         modeloLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         modeloLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(modeloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 113, 99, 27));
 
         añoLabel.setBackground(new java.awt.Color(0, 0, 0));
         añoLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         añoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(añoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 168, 99, 24));
 
         colorLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         colorLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(colorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 220, 101, 26));
 
         lbal.setForeground(new java.awt.Color(0, 0, 0));
         lbal.setText("Marca:");
+        panelCompra.add(lbal, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 252, 67, -1));
 
         marcaLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         marcaLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(marcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 274, 122, 29));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Tipo Motor:");
+        panelCompra.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 309, 122, -1));
 
         tipoMotorLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         tipoMotorLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(tipoMotorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 331, 113, 24));
+        panelCompra.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 467, 152, -1));
 
         fi.setForeground(new java.awt.Color(0, 0, 0));
         fi.setText("Fecha ingreso:");
+        panelCompra.add(fi, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 361, 128, -1));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Disponibles:");
+        panelCompra.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 31, -1, -1));
+        panelCompra.add(cantidadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 31, 57, -1));
 
         precioLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         precioLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(precioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 53, 154, 26));
 
         fechaIngresooLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         fechaIngresooLabel.setForeground(new java.awt.Color(0, 0, 0));
+        panelCompra.add(fechaIngresooLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 389, 128, 28));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Placa:");
+        panelCompra.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 429, 48, -1));
 
         placaLabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout panelCompraLayout = new javax.swing.GroupLayout(panelCompra);
-        panelCompra.setLayout(panelCompraLayout);
-        panelCompraLayout.setHorizontalGroup(
-            panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cantidadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelCompraLayout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(modeloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
-                            .addComponent(añoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(colorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbal, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                .addComponent(marcaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(precioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoMotorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fi, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechaIngresooLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141))
-        );
-        panelCompraLayout.setVerticalGroup(
-            panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cantidadLabel)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(precioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modeloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(añoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel12))
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(colorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(marcaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tipoMotorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fi)
-                .addGap(12, 12, 12)
-                .addComponent(fechaIngresooLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(placaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelCompra.add(placaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 429, 164, 27));
 
         jPanel1.add(panelCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 460, 480));
 
@@ -325,7 +252,7 @@ public class compraFase extends javax.swing.JFrame {
         jPanel1.add(pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, 90, 30));
 
         logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/image 2.jpg"))); // NOI18N
-        jPanel1.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 470, 90, 70));
+        jPanel1.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 480, 60, 70));
 
         jLabel13.setFont(new java.awt.Font("Century Schoolbook", 1, 48)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -347,7 +274,7 @@ public class compraFase extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -3,7 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/Sistema_Automotriz/src/vista/compraFase.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/Sesion.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/vista/Registro.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/vista/compraFase.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/Compra.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/controller/carsController.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/ConexionBD.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/vista/Administrador.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/vista/Cliente.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/PlacaCarro.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/carroDAO.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/Carro.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/vista/InicioSesion.java</file>
+            <file>file:/C:/Users/gameV/Documents/Sistema_Automotriz/src/model/UsuarioDao.java</file>
         </group>
     </open-files>
 </project-private>

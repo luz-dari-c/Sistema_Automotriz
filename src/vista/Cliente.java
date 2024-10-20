@@ -195,7 +195,7 @@ public class Cliente extends javax.swing.JFrame {
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rojo_1.png"))); // NOI18N
-        onFirex.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 620, 380));
+        onFirex.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 620, 370));
 
         labelModelo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         labelModelo.setForeground(new java.awt.Color(0, 0, 0));
@@ -1123,7 +1123,8 @@ public class Cliente extends javax.swing.JFrame {
     
       public void cargarComprasEnTabla(String identificacionUsuario) throws SQLException {
         carroDAO carroD = new carroDAO(); 
-        List<Compra> listaCompras = carroD.obtenerComprasPorUsuario(identificacionUsuario); 
+        int idUsuario = Integer.parseInt(identificacionUsuario);
+        List<Compra> listaCompras = carroD.obtenerComprasPorUsuario(idUsuario); 
 
         DefaultTableModel model = (DefaultTableModel) compraUsuarioTabla.getModel(); 
         model.setRowCount(0); 
@@ -1137,15 +1138,8 @@ public class Cliente extends javax.swing.JFrame {
         compra.getTotal(),
         compra.getCantidad(),
         compra.getColor(),
-        compra.getTipoMotor()
+        
             });
         }
     }
 }
-
-
-
-
-
-
-

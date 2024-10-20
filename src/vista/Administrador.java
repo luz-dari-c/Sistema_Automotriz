@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.*;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -120,6 +121,8 @@ public class Administrador extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         inputAño1 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAdministrador = new javax.swing.JTable();
@@ -186,15 +189,15 @@ public class Administrador extends javax.swing.JFrame {
                 inputMarcaActionPerformed(evt);
             }
         });
-        añadir.add(inputMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 290, 40));
+        añadir.add(inputMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 290, 40));
 
         txtMarca.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca.setText("Marca");
-        añadir.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 320, 20));
+        añadir.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 320, 20));
 
         txtModelo.setForeground(new java.awt.Color(0, 0, 0));
         txtModelo.setText("Modelo");
-        añadir.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 320, 20));
+        añadir.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 320, 20));
 
         inputModelo.setBackground(new java.awt.Color(0, 0, 0, 0));
         inputModelo.setForeground(new java.awt.Color(51, 51, 51));
@@ -204,11 +207,11 @@ public class Administrador extends javax.swing.JFrame {
                 inputModeloActionPerformed(evt);
             }
         });
-        añadir.add(inputModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 290, 40));
+        añadir.add(inputModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 290, 40));
 
         txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecio.setText("Precio");
-        añadir.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 320, 20));
+        añadir.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 320, 20));
 
         inputPrecio.setBackground(new java.awt.Color(0, 0, 0, 0));
         inputPrecio.setForeground(new java.awt.Color(51, 51, 51));
@@ -218,11 +221,11 @@ public class Administrador extends javax.swing.JFrame {
                 inputPrecioActionPerformed(evt);
             }
         });
-        añadir.add(inputPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 290, 40));
+        añadir.add(inputPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 290, 40));
 
         txtMarca1.setForeground(new java.awt.Color(0, 0, 0));
         txtMarca1.setText("FechaRegistro");
-        añadir.add(txtMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 320, 20));
+        añadir.add(txtMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 320, 20));
 
         inputFechaRegistro.setBackground(new java.awt.Color(0, 0, 0, 0));
         inputFechaRegistro.setForeground(new java.awt.Color(51, 51, 51));
@@ -232,7 +235,7 @@ public class Administrador extends javax.swing.JFrame {
                 inputFechaRegistroActionPerformed(evt);
             }
         });
-        añadir.add(inputFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 290, 40));
+        añadir.add(inputFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 290, 40));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -242,7 +245,7 @@ public class Administrador extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        añadir.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, -1, -1));
+        añadir.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, -1, -1));
 
         inputColor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         inputColor.addActionListener(new java.awt.event.ActionListener() {
@@ -250,11 +253,11 @@ public class Administrador extends javax.swing.JFrame {
                 inputColorActionPerformed(evt);
             }
         });
-        añadir.add(inputColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 290, 40));
+        añadir.add(inputColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 290, 40));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Color");
-        añadir.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 90, -1));
+        añadir.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 90, -1));
 
         inputKilometraje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         inputKilometraje.addActionListener(new java.awt.event.ActionListener() {
@@ -262,18 +265,18 @@ public class Administrador extends javax.swing.JFrame {
                 inputKilometrajeActionPerformed(evt);
             }
         });
-        añadir.add(inputKilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 290, 40));
+        añadir.add(inputKilometraje, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 290, 40));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Kilometraje");
-        añadir.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        añadir.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         inputTipoMotor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        añadir.add(inputTipoMotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 296, 290, 40));
+        añadir.add(inputTipoMotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 290, 40));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Tipo Motor");
-        añadir.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+        añadir.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
 
         cantidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cantidad.addActionListener(new java.awt.event.ActionListener() {
@@ -281,18 +284,30 @@ public class Administrador extends javax.swing.JFrame {
                 cantidadActionPerformed(evt);
             }
         });
-        añadir.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 290, 40));
+        añadir.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 290, 40));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Año");
-        añadir.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        añadir.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Cantidad:");
-        añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
+        añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         inputAño1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        añadir.add(inputAño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 290, 40));
+        añadir.add(inputAño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 290, 40));
+
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Color");
+        añadir.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 40, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Verde", "Morado", "Negro", "Blanco", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        añadir.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
         jTabbedPane1.addTab("Agregar", añadir);
 
@@ -746,7 +761,7 @@ public class Administrador extends javax.swing.JFrame {
 
         }
         carroDAO cD = new carroDAO();
-        cD.eliminarAuto(inputPlacaAutoEliminar);
+        cD.disminuirCantidadCarro(inputPlacaAutoEliminar);
 
     }//GEN-LAST:event_eliminarCarroActionPerformed
 
@@ -814,6 +829,10 @@ public class Administrador extends javax.swing.JFrame {
     }                       
     }//GEN-LAST:event_CierreSesionActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+   
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -876,6 +895,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JTextField inputTipoMotor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -889,6 +909,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

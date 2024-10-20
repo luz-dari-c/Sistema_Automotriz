@@ -1,22 +1,41 @@
-
 package model;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 
 public class Compra {
     private String nombreAuto;
     private BigDecimal precioAuto;
-   private Timestamp fechaCompra; 
+    private Timestamp fechaCompra; 
     private BigDecimal total;
     private int cantidad;
     private String nombreUsuario;  
     private String apellidoUsuario;
     private String identificacionUsuario; 
-    private String Placa;
+    private String placa;  
     private String color; 
-    private String tipoMotor;
 
+    // Constructor principal
+    public Compra(String nombreAuto, BigDecimal precioAuto, Timestamp fechaCompra, 
+                  BigDecimal total, int cantidad, String nombreUsuario, 
+                  String apellidoUsuario, String identificacionUsuario, 
+                  String placa, String color) {
+        this.nombreAuto = nombreAuto;
+        this.precioAuto = precioAuto;
+        this.fechaCompra = fechaCompra;
+        this.total = total;
+        this.cantidad = cantidad;
+        this.nombreUsuario = nombreUsuario;   
+        this.apellidoUsuario = apellidoUsuario;
+        this.identificacionUsuario = identificacionUsuario;  
+        this.placa = placa;  
+        this.color = color;
+    }
+
+    // Otros constructores si son necesarios
+    // Puedes agregar otros constructores según tus necesidades o eliminarlos si no se utilizan.
+
+    // Getters
     public String getNombreAuto() {
         return nombreAuto;
     }
@@ -50,29 +69,10 @@ public class Compra {
     }
 
     public String getPlaca() {
-        return Placa;
+        return placa;  
     }
 
     public String getColor() {
         return color;
-    }
-
-    public String getTipoMotor() {
-        return tipoMotor;
-    }
-
-   
-    public Compra(String nombreAuto, BigDecimal precioAuto, Timestamp fechaCompra, BigDecimal total, int cantidad, String nombreUsuario, String apellidoUsuario, String identificacionUsuario, String Placa, String color, String TipoMotor) {
-        this.nombreAuto = nombreAuto;
-        this.precioAuto = precioAuto;
-        this.fechaCompra = fechaCompra;
-        this.total = total;
-        this.cantidad = cantidad;
-        this.nombreUsuario = nombreUsuario;   
-        this.apellidoUsuario = apellidoUsuario;
-        this.identificacionUsuario = identificacionUsuario;  
-        this.Placa = Placa;
-        this.color = color;
-        this.tipoMotor = TipoMotor;
     }
 }

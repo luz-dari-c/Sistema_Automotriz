@@ -5,7 +5,7 @@ public class Carro {
     private int id; 
     private String marca;
     private String modelo;
-    private String año;
+    private int año; // Cambiado a int
     private Double precio;
     private String color;
     private String tipoMotor;
@@ -13,9 +13,10 @@ public class Carro {
     private String fechaIngresoo;
     private String placa;
     private int cantidad;
+    private String colorAuto; // Renombrado para consistencia
 
-    
-    public Carro(int id, String marca, String modelo, String año, Double precio, String color, String tipoMotor, String kilometraje, String fechaIngresoo, String placa, int cantidad) {
+    // Constructor actualizado
+    public Carro(int id, String marca, String modelo, int año, Double precio, String color, String tipoMotor, String kilometraje, String fechaIngresoo, String placa, int cantidad, String colorAuto) {
         this.id = id; 
         this.marca = marca;
         this.modelo = modelo;
@@ -27,9 +28,25 @@ public class Carro {
         this.fechaIngresoo = fechaIngresoo;
         this.placa = placa;
         this.cantidad = cantidad;
+        this.colorAuto = colorAuto; // Asignación del nuevo color
     }
 
- 
+    // Constructor adicional (si lo necesitas)
+    public Carro(int cantidad, String marca, String modelo, int año, Double precio, String color, String tipoMotor, String kilometraje, String fechaIngresoo, String placa) {
+        this.cantidad = cantidad;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.año = año;
+        this.precio = precio;
+        this.color = color;
+        this.tipoMotor = tipoMotor;
+        this.kilometraje = kilometraje;
+        this.fechaIngresoo = fechaIngresoo;
+        this.placa = placa;
+        // Si no necesitas id o color_auto, puedes omitirlos o establecer valores predeterminados
+    }
+
+    // Getters y Setters
     public String getMarca() {
         return marca;
     }
@@ -46,11 +63,11 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public String getAño() {
+    public int getAño() { // Cambiado a int
         return año;
     }
 
-    public void setAño(String año) {
+    public void setAño(int año) { // Cambiado a int
         this.año = año;
     }
 
@@ -112,5 +129,13 @@ public class Carro {
 
     public int getId() {
         return id; 
+    }
+
+    public String getColorAuto() { // Renombrado para consistencia
+        return colorAuto; // Getter para el nuevo color
+    }
+
+    public void setColorAuto(String colorAuto) { // Renombrado para consistencia
+        this.colorAuto = colorAuto; 
     }
 }
