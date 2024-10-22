@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 
 import controller.userController;
@@ -9,10 +6,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import sombra.textoSombra;
 
-/**
- *
- * @author gameV
- */
 public class Registro extends javax.swing.JFrame {
 
    
@@ -324,9 +317,6 @@ public class Registro extends javax.swing.JFrame {
         return;
     }
     
-
-   
-    
     
     boolean registrado = controlador.registroUsuario(correo, nombre, apellido, identificacion, user, contraseña);
 
@@ -337,7 +327,7 @@ public class Registro extends javax.swing.JFrame {
     }
     
     if (correo.contains("@") && correo.endsWith(".com")){
-} else {
+     } else {
     JOptionPane.showMessageDialog(null, "Por favor, ingrese un email valido.");
     
      

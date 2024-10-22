@@ -10,7 +10,7 @@ public class usuarios {
     private String correo;
 
     public usuarios(int id, String nombre, String apellidos, String identificacion, String user, String contraseña, String correo) {
-        this.id = id; // Inicializa el ID
+        this.id = id; 
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.identificacion = identificacion;
@@ -19,7 +19,6 @@ public class usuarios {
         this.correo = correo;
     }
 
-    // Método para obtener el ID del usuario
     public int getId() {
         return id;
     }
