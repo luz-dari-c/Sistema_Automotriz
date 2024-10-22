@@ -17,6 +17,7 @@ public class UsuarioDao {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             System.out.println("Error en la conexion: " + e.getMessage());
+            e.printStackTrace(); 
         }
         return conn;
     }
@@ -31,23 +32,22 @@ public class UsuarioDao {
         ResultSet rs = pstmt.executeQuery();
 
         if (rs.next()) {
-            int id = rs.getInt("id"); // Asegúrate de tener el campo 'id' en tu base de datos
+            int id = rs.getInt("id"); 
             String nombre = rs.getString("nombre");
-            String apellidos = rs.getString("apellido"); // Cambiado a 'apellido'
+            String apellidos = rs.getString("apellido"); 
             String identificacion = rs.getString("identificacion");
-            String correo = rs.getString("correo_electronico"); // Cambiado a 'correo_electronico'
+            String correo = rs.getString("correo_electronico"); 
 
             return new usuarios(id, nombre, apellidos, identificacion, username, password, correo);
         }
     } catch (SQLException e) {
         System.out.println("Error al obtener el usuario: " + e.getMessage());
     }
-    return null; // Si no se encuentra, devuelve null
+    return null; 
 }
 
 
     public boolean authenticateUser(String username, String password) {
-        // Este método ya no es necesario con la implementación de getUsuario
         return getUsuario(username, password) != null;
     }
 }
