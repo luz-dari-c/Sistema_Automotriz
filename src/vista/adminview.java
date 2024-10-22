@@ -1,4 +1,3 @@
-
 package vista;
 
 import java.math.BigDecimal;
@@ -23,38 +22,36 @@ import model.carroDAO;
 
 public class adminview extends javax.swing.JFrame {
 
-   
     public adminview() throws SQLException {
         initComponents();
-         setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         cargarProfesoresEnTabla();
         iniciarOpciones();
         cargarComprasEnTabla();
- 
+
     }
 
     public void iniciarOpciones() {
         JMenuItem aumentar = new JMenuItem("Agregar cantidad");
         JMenuItem eliminar = new JMenuItem("Eliminar cantidad");
-     
+
         ppMenuTabla.add(aumentar);
         ppMenuTabla.add(eliminar);
 
         tablaAdministrador.setComponentPopupMenu(ppMenuTabla);
-   
+
         eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tablaAdministrador.getSelectedRow();
 
-                if (selectedRow != -1) { 
-                    
+                if (selectedRow != -1) {
+
                     String modelo = (String) tablaAdministrador.getValueAt(selectedRow, 1);
 
-                    
                     int confirm = JOptionPane.showConfirmDialog(null, "Seguro de que deseas disminuir la cantidad", "Confirmación", JOptionPane.YES_NO_OPTION);
                     if (confirm == JOptionPane.YES_OPTION) {
-                       
+
                         carroDAO crd = new carroDAO();
                         crd.disminuirCantidadCarro(modelo);
 
@@ -64,20 +61,19 @@ public class adminview extends javax.swing.JFrame {
                 }
             }
         });
-       
-        aumentar.addActionListener(new ActionListener(){
-             @Override 
-             public void actionPerformed(ActionEvent e) {
+
+        aumentar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 int selectedRow = tablaAdministrador.getSelectedRow();
 
-                if (selectedRow != +1) { 
-                    
+                if (selectedRow != +1) {
+
                     String modelo = (String) tablaAdministrador.getValueAt(selectedRow, 1);
 
-                    
                     int confirm = JOptionPane.showConfirmDialog(null, "Seguro de que deseas aumentar la cantidad", "Confirmación", JOptionPane.YES_NO_OPTION);
                     if (confirm == JOptionPane.YES_OPTION) {
-                       
+
                         carroDAO crd = new carroDAO();
                         crd.aumentarCantidad(modelo);
 
@@ -86,12 +82,11 @@ public class adminview extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Seleccione un carro al cual aumentar su cantidad.");
                 }
             }
-             
+
         });
-  
+
     }
-    
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -694,14 +689,13 @@ public class adminview extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
- 
-    
+
     private void btn_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_4MouseClicked
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_btn_4MouseClicked
 
     private void btn_4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_4MousePressed
-        
+
     }//GEN-LAST:event_btn_4MousePressed
 
     private void btn_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_3MouseClicked
@@ -725,9 +719,9 @@ public class adminview extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void vendidodopanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendidodopanelMouseClicked
-                                    
+
         jTabbedPane1.setSelectedIndex(3);
-                                     
+
 
     }//GEN-LAST:event_vendidodopanelMouseClicked
 
@@ -736,20 +730,20 @@ public class adminview extends javax.swing.JFrame {
     }//GEN-LAST:event_vendidodopanelMouseEntered
 
     private void CierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreSesionActionPerformed
-      
-       int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION); 
-        
-        if (confirm ==JOptionPane.YES_OPTION) {
-              
-             this.dispose();
-            
+
+        int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+
+            this.dispose();
+
             InicioSesion is = new InicioSesion();
             is.setVisible(true);
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Cierre de sesión cancelado.");
-       
-    }                       
+
+        }
     }//GEN-LAST:event_CierreSesionActionPerformed
 
     private void eliminarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCarroActionPerformed
@@ -817,7 +811,7 @@ public class adminview extends javax.swing.JFrame {
         carsController controller = new carsController();
 
         if (marca.isEmpty() || fecha.isEmpty() || precioTexto.isEmpty() || color.isEmpty()
-            || modelo.isEmpty() || Kilometraje.isEmpty() || tipoMotor.isEmpty() || año.isEmpty() || cantidades.isEmpty()) {
+                || modelo.isEmpty() || Kilometraje.isEmpty() || tipoMotor.isEmpty() || año.isEmpty() || cantidades.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese todos los campos");
             return;
         }
@@ -860,24 +854,28 @@ public class adminview extends javax.swing.JFrame {
     }//GEN-LAST:event_inputMarcaActionPerformed
 
     private void modificarPrecioCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPrecioCarroActionPerformed
-    String modelo = imputModeloModificar.getText().trim(); 
-    String nuevoPrecioTexto = imputPrecioModificar.getText().trim();  
 
-    if (modelo.isEmpty() || nuevoPrecioTexto.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese el modelo del auto y el nuevo precio.");
-        return;
-    }
+        String modelo = imputModeloModificar.getText().trim();
+        String nuevoPrecioTexto = imputPrecioModificar.getText().trim();
 
-    double nuevoPrecio;
-    try {
-        nuevoPrecio = Double.parseDouble(nuevoPrecioTexto);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.");
-        return;
-    }
+        if (modelo.isEmpty() || nuevoPrecioTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el modelo del auto y el nuevo precio.");
+            return;
+        }
+
+        double nuevoPrecio;
+        try {
+            nuevoPrecio = Double.parseDouble(nuevoPrecioTexto);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.");
+            return;
+
+        }
 
         carModified modificador = new carModified();
-    modificador.modificarPrecioAuto(modelo, nuevoPrecio);
+        modificador.modificarPrecioAuto(modelo, nuevoPrecio);
+
+
     }//GEN-LAST:event_modificarPrecioCarroActionPerformed
 
     public static void main(String args[]) {
@@ -999,7 +997,7 @@ public class adminview extends javax.swing.JFrame {
                 cars.getMarca(),
                 cars.getModelo(),
                 cars.getAño(),
-                formatoPrecio.format(cars.getPrecio()), 
+                formatoPrecio.format(cars.getPrecio()),
                 cars.getColor(),
                 cars.getTipoMotor(),
                 cars.getKilometraje(),
@@ -1009,33 +1007,30 @@ public class adminview extends javax.swing.JFrame {
 
             });
         }
-        
-        
-    }
-    
-   public void cargarComprasEnTabla() throws SQLException {
-    carroDAO carroD = new carroDAO(); 
-    List<Compra> listaCarros = carroD.obtenerAutosVendidos(); 
 
-    DefaultTableModel model = (DefaultTableModel) ventasTbla.getModel(); 
-    model.setRowCount(0); 
-
-  
-    for (Compra compra : listaCarros) {
-        model.addRow(new Object[]{
-            
-            compra.getNombreAuto(),
-            compra.getPrecioAuto(),
-            compra.getPlaca(),
-            compra.getFechaCompra(),
-            compra.getTotal(),
-            compra.getCantidad(),
-            compra.getNombreUsuario(),
-            compra.getApellidoUsuario(),
-            compra.getIdentificacionUsuario()
-          
-        });
     }
-}
+
+    public void cargarComprasEnTabla() throws SQLException {
+        carroDAO carroD = new carroDAO();
+        List<Compra> listaCarros = carroD.obtenerAutosVendidos();
+
+        DefaultTableModel model = (DefaultTableModel) ventasTbla.getModel();
+        model.setRowCount(0);
+
+        for (Compra compra : listaCarros) {
+            model.addRow(new Object[]{
+                compra.getNombreAuto(),
+                compra.getPrecioAuto(),
+                compra.getPlaca(),
+                compra.getFechaCompra(),
+                compra.getTotal(),
+                compra.getCantidad(),
+                compra.getNombreUsuario(),
+                compra.getApellidoUsuario(),
+                compra.getIdentificacionUsuario()
+
+            });
+        }
+    }
 
 }

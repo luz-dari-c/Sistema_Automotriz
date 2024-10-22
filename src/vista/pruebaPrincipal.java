@@ -1,4 +1,3 @@
-
 package vista;
 
 import java.awt.Color;
@@ -8,22 +7,26 @@ import model.carroDAO;
 import controller.carsController;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Compra;
 import model.Sesion;
+import model.UsuarioDao;
+import model.userModified;
 import model.usuarios;
-
+import vista.InicioSesion;
+import vista.compraFase;
 
 public class pruebaPrincipal extends javax.swing.JFrame {
-    
- private String identificacionUsuario;
-  private JTable comprasUsuarioTabla; 
 
-    
+    private String identificacionUsuario;
+    private JTable comprasUsuarioTabla;
+    private car carroSeleccionado;
+
     public pruebaPrincipal(String identificacionUsuario) throws SQLException {
         initComponents();
-         setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         comprasUsuarioTabla = new javax.swing.JTable();
         this.identificacionUsuario = identificacionUsuario; // Guarda el identificador
         setLocationRelativeTo(null);
@@ -33,8 +36,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
     //private pruebaPrincipal() {
     //    throw new UnsupportedOperationException("Not supported yet."); // Generated from //nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     //}
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,56 +46,92 @@ public class pruebaPrincipal extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         CierreSesion = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         principal = new javax.swing.JTabbedPane();
         onFirex = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         labelModelo = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         Comprar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        VerPrecio1 = new javax.swing.JButton();
+        FirePrecio = new javax.swing.JLabel();
         Amngrey = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         modelo2 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         Comprar1 = new javax.swing.JButton();
+        VerPrecio2 = new javax.swing.JButton();
+        GreyPrecio = new javax.swing.JLabel();
         whiback = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         modelo3 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
         Comprar2 = new javax.swing.JButton();
+        VerPrecio3 = new javax.swing.JButton();
+        BuzzPrecio = new javax.swing.JLabel();
         BigBuzz = new javax.swing.JPanel();
         modelo4 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         Comprar3 = new javax.swing.JButton();
+        VerPrecio4 = new javax.swing.JButton();
+        DecPrecio = new javax.swing.JLabel();
         DecBwom = new javax.swing.JPanel();
         modelo5 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
-        jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         Comprar4 = new javax.swing.JButton();
+        VerPrecio5 = new javax.swing.JButton();
+        MiniPrecio = new javax.swing.JLabel();
         AllBarbie = new javax.swing.JPanel();
         modelo6 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
-        jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        VerPrecio6 = new javax.swing.JButton();
+        BarbiePrecio = new javax.swing.JLabel();
         historial = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         compraUsuarioTabla = new javax.swing.JTable();
+        InformacionUsuario = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        CorreoLabel = new javax.swing.JLabel();
+        NombreLabel = new javax.swing.JLabel();
+        ApellidoLabel = new javax.swing.JLabel();
+        IdentificacionLabel = new javax.swing.JLabel();
+        UsuarioLabel = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        NuevaContraseña = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        ModificarInformacionDeUsuario = new javax.swing.JButton();
+        ContraseñaDelUsuario = new javax.swing.JTextField();
+        NuevoNombre = new javax.swing.JTextField();
+        NuevoApellido = new javax.swing.JTextField();
+        NuevoUsuario = new javax.swing.JTextField();
+        NuevoCorreo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -189,7 +226,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(882, 47, 185, 58));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, -1, 58));
+
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (1).png"))); // NOI18N
+        jLabel7.setText("Usuario");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 50, 100, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1120, 110));
 
@@ -212,12 +260,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(102, 102, 102));
         jLabel31.setText("Completamente 0 km.");
         onFirex.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
-
-        jLabel56.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel56.setFont(new java.awt.Font("Bodoni MT Black", 0, 24)); // NOI18N
-        jLabel56.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel56.setText("$121.000.000");
-        onFirex.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
 
         jPanel17.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -246,6 +288,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
         onFirex.add(Comprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, -1, -1));
         onFirex.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
+        VerPrecio1.setText("Ver más información");
+        VerPrecio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPrecio1ActionPerformed(evt);
+            }
+        });
+        onFirex.add(VerPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 150, -1));
+
+        FirePrecio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        FirePrecio.setForeground(new java.awt.Color(0, 0, 0));
+        onFirex.add(FirePrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 160, 30));
+
         principal.addTab("OnFirex", onFirex);
 
         Amngrey.setBackground(new java.awt.Color(255, 255, 255));
@@ -267,12 +321,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
         jLabel38.setForeground(new java.awt.Color(102, 102, 102));
         jLabel38.setText("Completamente 0 km.");
         Amngrey.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
-
-        jLabel57.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel57.setFont(new java.awt.Font("Bodoni MT Black", 0, 24)); // NOI18N
-        jLabel57.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel57.setText("$149.000.000");
-        Amngrey.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
 
         jPanel18.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -299,6 +347,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
             }
         });
         Amngrey.add(Comprar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, -1, -1));
+
+        VerPrecio2.setText("Ver más información");
+        VerPrecio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPrecio2ActionPerformed(evt);
+            }
+        });
+        Amngrey.add(VerPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 150, -1));
+
+        GreyPrecio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        GreyPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        Amngrey.add(GreyPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 160, 30));
 
         principal.addTab("Amngrey", Amngrey);
 
@@ -331,12 +391,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
 
         whiback.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 190, 10));
 
-        jLabel43.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel43.setFont(new java.awt.Font("Bodoni MT Black", 0, 24)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel43.setText("$180.000.000");
-        whiback.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
-
         Comprar2.setBackground(new java.awt.Color(102, 0, 0));
         Comprar2.setForeground(new java.awt.Color(255, 255, 255));
         Comprar2.setText("Comprar");
@@ -347,6 +401,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
             }
         });
         whiback.add(Comprar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, -1, -1));
+
+        VerPrecio3.setText("Ver más información");
+        VerPrecio3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPrecio3ActionPerformed(evt);
+            }
+        });
+        whiback.add(VerPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 150, -1));
+
+        BuzzPrecio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        BuzzPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        whiback.add(BuzzPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 160, 30));
 
         principal.addTab("Whiback", whiback);
 
@@ -373,12 +439,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
 
         BigBuzz.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 190, 10));
 
-        jLabel45.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel45.setFont(new java.awt.Font("Bodoni MT Black", 0, 24)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel45.setText("$190.000.000");
-        BigBuzz.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
-
         jLabel46.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
         jLabel46.setText("Misterioso y encantador");
@@ -397,6 +457,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
             }
         });
         BigBuzz.add(Comprar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, -1, -1));
+
+        VerPrecio4.setText("Ver más información");
+        VerPrecio4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPrecio4ActionPerformed(evt);
+            }
+        });
+        BigBuzz.add(VerPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 150, -1));
+
+        DecPrecio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        DecPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        BigBuzz.add(DecPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 160, 30));
 
         principal.addTab("BigBuzz", BigBuzz);
 
@@ -423,12 +495,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
 
         DecBwom.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 190, 10));
 
-        jLabel49.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel49.setFont(new java.awt.Font("Bodoni MT Black", 0, 24)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel49.setText("$130.000.000");
-        DecBwom.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, -1, -1));
-
         jLabel50.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(0, 0, 0));
         jLabel50.setText("Naturalmente veloz.");
@@ -447,6 +513,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
             }
         });
         DecBwom.add(Comprar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, -1, -1));
+
+        VerPrecio5.setText("Ver más información");
+        VerPrecio5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPrecio5ActionPerformed(evt);
+            }
+        });
+        DecBwom.add(VerPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 150, -1));
+
+        MiniPrecio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        MiniPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        DecBwom.add(MiniPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 160, 30));
 
         principal.addTab("DecBwom", DecBwom);
 
@@ -473,12 +551,6 @@ public class pruebaPrincipal extends javax.swing.JFrame {
 
         AllBarbie.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 190, 10));
 
-        jLabel53.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel53.setFont(new java.awt.Font("Bodoni MT Black", 0, 24)); // NOI18N
-        jLabel53.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel53.setText("$224.000.000");
-        AllBarbie.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
-
         jLabel54.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(0, 0, 0));
         jLabel54.setText("Tierno y todoterreno.");
@@ -495,6 +567,18 @@ public class pruebaPrincipal extends javax.swing.JFrame {
             }
         });
         AllBarbie.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, -1, -1));
+
+        VerPrecio6.setText("Ver más información");
+        VerPrecio6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerPrecio6ActionPerformed(evt);
+            }
+        });
+        AllBarbie.add(VerPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 150, -1));
+
+        BarbiePrecio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        BarbiePrecio.setForeground(new java.awt.Color(0, 0, 0));
+        AllBarbie.add(BarbiePrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 160, 30));
 
         principal.addTab("AllBarbie", AllBarbie);
 
@@ -522,6 +606,140 @@ public class pruebaPrincipal extends javax.swing.JFrame {
         historial.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 800, 400));
 
         principal.addTab("Historial", historial);
+
+        InformacionUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        InformacionUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel19.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel29.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel29.setText("Correo electronico:");
+        jPanel19.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        jLabel32.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel32.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel32.setText("Nombre:");
+        jPanel19.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        jLabel34.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel34.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setText("Apellido:");
+        jPanel19.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel35.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel35.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel35.setText("Identificación:");
+        jPanel19.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jLabel36.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel36.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel36.setText("Usuario:");
+        jPanel19.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        CorreoLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        CorreoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel19.add(CorreoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 180, 30));
+
+        NombreLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        NombreLabel.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel19.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 180, 30));
+
+        ApellidoLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ApellidoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel19.add(ApellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 180, 30));
+
+        IdentificacionLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        IdentificacionLabel.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel19.add(IdentificacionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 180, 30));
+
+        UsuarioLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        UsuarioLabel.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel19.add(UsuarioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 180, 30));
+
+        InformacionUsuario.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 350, 400));
+
+        jButton2.setText("Refrescar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        InformacionUsuario.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
+
+        jLabel41.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setText("Modificar informacion de usuario");
+        InformacionUsuario.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
+
+        jLabel43.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setText("INFORMACIÓN DE USUARIO");
+        InformacionUsuario.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 260, -1));
+
+        jLabel44.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel44.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel44.setText("Ingrese los nuevos datos:");
+        InformacionUsuario.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
+        InformacionUsuario.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 190, 30));
+
+        jLabel45.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel45.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel45.setText("Ingrese su contraseña:");
+        InformacionUsuario.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+
+        jLabel48.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel48.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel48.setText("Nueva contraseña:");
+        InformacionUsuario.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
+
+        jLabel49.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel49.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel49.setText("Nuevo nombre:");
+        InformacionUsuario.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, -1, -1));
+
+        jLabel52.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel52.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel52.setText("Nuevo apellido");
+        InformacionUsuario.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, 20));
+
+        jLabel53.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel53.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel53.setText("Nuevo usuario:");
+        InformacionUsuario.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, -1, -1));
+
+        jLabel56.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel56.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel56.setText("Nuevo correo:");
+        InformacionUsuario.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, 20));
+
+        ModificarInformacionDeUsuario.setText("Modificar");
+        ModificarInformacionDeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarInformacionDeUsuarioActionPerformed(evt);
+            }
+        });
+        InformacionUsuario.add(ModificarInformacionDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, -1, -1));
+        InformacionUsuario.add(ContraseñaDelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 190, 30));
+        InformacionUsuario.add(NuevoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 190, 30));
+        InformacionUsuario.add(NuevoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 190, 30));
+        InformacionUsuario.add(NuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 190, 30));
+        InformacionUsuario.add(NuevoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 190, 30));
+
+        principal.addTab("tab8", InformacionUsuario);
 
         jPanel1.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 570));
 
@@ -833,162 +1051,291 @@ public class pruebaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel11MouseExited
 
     private void Comprar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Comprar4ActionPerformed
-   String modeloCarro = modelo5.getText().trim();
-    JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro); 
+        String modeloCarro = modelo5.getText().trim();
+        JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro);
 
-    
-    carsController controller = new carsController();
-    car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro); 
+        carsController controller = new carsController();
+        car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro);
 
-    if (carroSeleccionado != null) {
-    if (carroSeleccionado.getCantidad() > 0) {
-         this.dispose();
-        compraFase cf = new compraFase(carroSeleccionado,identificacionUsuario );
-        cf.setVisible(true);
-    } else {
-        JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
-}
+        if (carroSeleccionado != null) {
+            if (carroSeleccionado.getCantidad() > 0) {
+                this.dispose();
+                compraFase cf = new compraFase(carroSeleccionado, identificacionUsuario);
+                cf.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
+        }
 
     }//GEN-LAST:event_Comprar4ActionPerformed
 
     private void Comprar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Comprar3ActionPerformed
-   String modeloCarro = modelo4.getText().trim();
-    JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro); 
+        String modeloCarro = modelo4.getText().trim();
+        JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro);
 
-    
-    carsController controller = new carsController();
-    car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro); 
+        carsController controller = new carsController();
+        car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro);
 
-    if (carroSeleccionado != null) {
-    if (carroSeleccionado.getCantidad() > 0) {
-         this.dispose();
-        compraFase cf = new compraFase(carroSeleccionado,identificacionUsuario);
-        cf.setVisible(true);
-    } else {
-        JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
-}
+        if (carroSeleccionado != null) {
+            if (carroSeleccionado.getCantidad() > 0) {
+                this.dispose();
+                compraFase cf = new compraFase(carroSeleccionado, identificacionUsuario);
+                cf.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
+        }
 
     }//GEN-LAST:event_Comprar3ActionPerformed
 
     private void Comprar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Comprar2ActionPerformed
-   String modeloCarro = modelo3.getText().trim();
-    JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro); 
+        String modeloCarro = modelo3.getText().trim();
+        JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro);
 
-    
-    carsController controller = new carsController();
-    car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro); 
+        carsController controller = new carsController();
+        car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro);
 
-    if (carroSeleccionado != null) {
-    if (carroSeleccionado.getCantidad() > 0) {
-         this.dispose();
-        compraFase cf = new compraFase(carroSeleccionado,identificacionUsuario);
-        cf.setVisible(true);
-    } else {
-        JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
-}
+        if (carroSeleccionado != null) {
+            if (carroSeleccionado.getCantidad() > 0) {
+                this.dispose();
+                compraFase cf = new compraFase(carroSeleccionado, identificacionUsuario);
+                cf.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
+        }
 
     }//GEN-LAST:event_Comprar2ActionPerformed
 
     private void Comprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Comprar1ActionPerformed
-    String modeloCarro = modelo2.getText().trim();
-    JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro); 
+        String modeloCarro = modelo2.getText().trim();
+        JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro);
 
-    
-    carsController controller = new carsController();
-    car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro); 
+        carsController controller = new carsController();
+        car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro);
 
-    if (carroSeleccionado != null) {
-    if (carroSeleccionado.getCantidad() > 0) {
-        
-        this.dispose();
-        compraFase cf = new compraFase(carroSeleccionado,identificacionUsuario);
-        cf.setVisible(true);
-    } else {
-        JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
-}
+        if (carroSeleccionado != null) {
+            if (carroSeleccionado.getCantidad() > 0) {
+
+                this.dispose();
+                compraFase cf = new compraFase(carroSeleccionado, identificacionUsuario);
+                cf.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
+        }
 
     }//GEN-LAST:event_Comprar1ActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
-       String modeloCarro = labelModelo.getText().trim();
-    JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro); 
+        String modeloCarro = labelModelo.getText().trim();
+        JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro);
 
-    
-    carsController controller = new carsController();
-    car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro); 
+        carsController controller = new carsController();
+        car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro);
 
-    if (carroSeleccionado != null) {
-    if (carroSeleccionado.getCantidad() > 0) {
-          this.dispose();
-        compraFase cf = new compraFase(carroSeleccionado,identificacionUsuario);
-        cf.setVisible(true);
-       
-    } else {
-        JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
-}
-            
-        
+        if (carroSeleccionado != null) {
+            if (carroSeleccionado.getCantidad() > 0) {
+
+                this.dispose();
+                compraFase cf = new compraFase(carroSeleccionado, identificacionUsuario);
+                cf.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
+        }
+
+
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String modeloCarro = modelo6.getText().trim();
-    JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro); 
+        String modeloCarro = modelo6.getText().trim();
+        JOptionPane.showMessageDialog(null, "Modelo obtenido: " + modeloCarro);
 
-    
-    carsController controller = new carsController();
-    car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro); 
+        carsController controller = new carsController();
+        car carroSeleccionado = controller.obtenerDatosCarro(modeloCarro);
 
-    if (carroSeleccionado != null) {
-    if (carroSeleccionado.getCantidad() > 0) {
-         this.dispose();
-        compraFase cf = new compraFase(carroSeleccionado,identificacionUsuario);
-        cf.setVisible(true);
-    } else {
-        JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
-}
+        if (carroSeleccionado != null) {
+            if (carroSeleccionado.getCantidad() > 0) {
+                this.dispose();
+                compraFase cf = new compraFase(carroSeleccionado, identificacionUsuario);
+                cf.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya no hay unidades disponibles para este carro.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron datos para el carro seleccionado.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreSesionActionPerformed
 
-       int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION); 
-        
-        if (confirm ==JOptionPane.YES_OPTION) {
-              
-             this.dispose();
-            
+        int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+
+            this.dispose();
+
             InicioSesion is = new InicioSesion();
             is.setVisible(true);
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Cierre de sesión cancelado.");
-       
+        }
     }//GEN-LAST:event_CierreSesionActionPerformed
-    
-   
-    
-    
-    }
-    
+
+    private void VerPrecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPrecio1ActionPerformed
+        String modeloCarro = labelModelo.getText();
+
+        if (modeloCarro == null || modeloCarro.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay modelo de carro seleccionado.");
+            return;
+        }
+
+        carroDAO dao = new carroDAO();
+
+        try {
+            double precio = dao.obtenerPrecioPorModelo(modeloCarro);
+            FirePrecio.setText(String.format("%.2f", precio));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al obtener el precio desde la base de datos.");
+        }
+    }//GEN-LAST:event_VerPrecio1ActionPerformed
+
+    private void VerPrecio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPrecio2ActionPerformed
+        String modeloCarro = modelo2.getText();
+
+        if (modeloCarro == null || modeloCarro.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay modelo de carro seleccionado.");
+            return;
+        }
+
+        carroDAO dao = new carroDAO();
+
+        try {
+            double precio = dao.obtenerPrecioPorModelo(modeloCarro);
+            GreyPrecio.setText(String.format("%.2f", precio));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al obtener el precio desde la base de datos.");
+    }    }//GEN-LAST:event_VerPrecio2ActionPerformed
+
+    private void VerPrecio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPrecio3ActionPerformed
+        String modeloCarro = modelo3.getText();
+
+        if (modeloCarro == null || modeloCarro.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay modelo de carro seleccionado.");
+            return;
+        }
+
+        carroDAO dao = new carroDAO();
+
+        try {
+            double precio = dao.obtenerPrecioPorModelo(modeloCarro);
+            BuzzPrecio.setText(String.format("%.2f", precio));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al obtener el precio desde la base de datos.");
+    }       }//GEN-LAST:event_VerPrecio3ActionPerformed
+
+    private void VerPrecio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPrecio4ActionPerformed
+        String modeloCarro = modelo4.getText();
+
+        if (modeloCarro == null || modeloCarro.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay modelo de carro seleccionado.");
+            return;
+        }
+
+        carroDAO dao = new carroDAO();
+
+        try {
+            double precio = dao.obtenerPrecioPorModelo(modeloCarro);
+            DecPrecio.setText(String.format("%.2f", precio));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al obtener el precio desde la base de datos.");
+    }       }//GEN-LAST:event_VerPrecio4ActionPerformed
+
+    private void VerPrecio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPrecio5ActionPerformed
+        String modeloCarro = modelo5.getText();
+
+        if (modeloCarro == null || modeloCarro.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay modelo de carro seleccionado.");
+            return;
+        }
+
+        carroDAO dao = new carroDAO();
+
+        try {
+            double precio = dao.obtenerPrecioPorModelo(modeloCarro);
+            MiniPrecio.setText(String.format("%.2f", precio));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al obtener el precio desde la base de datos.");
+    }       }//GEN-LAST:event_VerPrecio5ActionPerformed
+
+    private void VerPrecio6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPrecio6ActionPerformed
+        String modeloCarro = modelo6.getText();
+
+        if (modeloCarro == null || modeloCarro.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay modelo de carro seleccionado.");
+            return;
+        }
+
+        carroDAO dao = new carroDAO();
+
+        try {
+            double precio = dao.obtenerPrecioPorModelo(modeloCarro);
+            BarbiePrecio.setText(String.format("%.2f", precio));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al obtener el precio desde la base de datos.");
+    }       }//GEN-LAST:event_VerPrecio6ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    principal.setSelectedIndex(7);    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mostrarDatosUsuario();     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ModificarInformacionDeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarInformacionDeUsuarioActionPerformed
+        String contraseñaActual = ContraseñaDelUsuario.getText().trim();
+        String nuevoNombre = NuevoNombre.getText().trim();
+        String nuevoApellido = NuevoApellido.getText().trim();
+        String nuevoUsuario = NuevoUsuario.getText().trim();
+        String nuevoCorreo = NuevoCorreo.getText().trim();
+        String nuevaContrasena = NuevaContraseña.getText().trim();
+
+        if (nuevoNombre.isEmpty() && nuevoApellido.isEmpty() && nuevoUsuario.isEmpty() && nuevoCorreo.isEmpty() && nuevaContrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe modificar al menos un campo.");
+            return;
+        }
+
+        if (contraseñaActual.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese su contraseña actual.");
+            return;
+        }
+
+        userModified modificador = new userModified();
+
+        modificador.modificarDatosUsuario(identificacionUsuario, contraseñaActual, nuevoNombre, nuevoApellido, nuevoUsuario, nuevaContrasena, nuevoCorreo);
+
+    }//GEN-LAST:event_ModificarInformacionDeUsuarioActionPerformed
+
     public static void main(String args[]) {
-       
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -1011,43 +1358,86 @@ public class pruebaPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-       
         java.awt.EventQueue.invokeLater(new Runnable() {
-     
-        public void run() {
-             usuarios usuarioActual = Sesion.getUsuarioActual(); // Obtiene el usuario actual
-        if (usuarioActual != null) {
-            String identificacionUsuario = usuarioActual.getIdentificacion();
-            try {
-                new pruebaPrincipal(identificacionUsuario).setVisible(true);
-            } catch (SQLException e) {
-                e.printStackTrace();
+
+            public void run() {
+                usuarios usuarioActual = Sesion.getUsuarioActual(); // Obtiene el usuario actual
+                if (usuarioActual != null) {
+                    String identificacionUsuario = usuarioActual.getIdentificacion();
+                    try {
+                        new pruebaPrincipal(identificacionUsuario).setVisible(true);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "No hay usuario autenticado.");
+                }
             }
-        } else {
-           
-            JOptionPane.showMessageDialog(null, "No hay usuario autenticado.");
-        }
-        }
-            
-            
-            
+
         });
     }
+
+    private void mostrarDatosUsuario() {
+        try {
+            UsuarioDao usuarioDao = new UsuarioDao();
+            usuarios usuarioDetalles = usuarioDao.obtenerInformacionPorUsuario(identificacionUsuario);
+            if (usuarioDetalles != null) {
+                // Muestra los datos del usuario en las etiquetas (JLabels)
+                NombreLabel.setText(usuarioDetalles.getNombre());
+                ApellidoLabel.setText(usuarioDetalles.getApellidos());
+                UsuarioLabel.setText(usuarioDetalles.getUser());
+                CorreoLabel.setText(usuarioDetalles.getCorreo());
+                IdentificacionLabel.setText(usuarioDetalles.getIdentificacion());
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario no encontrado.");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al obtener los datos del usuario: " + e.getMessage());
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AllBarbie;
     private javax.swing.JPanel Amngrey;
+    private javax.swing.JLabel ApellidoLabel;
+    private javax.swing.JLabel BarbiePrecio;
     private javax.swing.JPanel BigBuzz;
+    private javax.swing.JLabel BuzzPrecio;
     private javax.swing.JButton CierreSesion;
     private javax.swing.JButton Comprar;
     private javax.swing.JButton Comprar1;
     private javax.swing.JButton Comprar2;
     private javax.swing.JButton Comprar3;
     private javax.swing.JButton Comprar4;
+    private javax.swing.JTextField ContraseñaDelUsuario;
+    private javax.swing.JLabel CorreoLabel;
     private javax.swing.JPanel DecBwom;
+    private javax.swing.JLabel DecPrecio;
+    private javax.swing.JLabel FirePrecio;
+    private javax.swing.JLabel GreyPrecio;
+    private javax.swing.JLabel IdentificacionLabel;
+    private javax.swing.JPanel InformacionUsuario;
+    private javax.swing.JLabel MiniPrecio;
+    private javax.swing.JButton ModificarInformacionDeUsuario;
+    private javax.swing.JLabel NombreLabel;
+    private javax.swing.JTextField NuevaContraseña;
+    private javax.swing.JTextField NuevoApellido;
+    private javax.swing.JTextField NuevoCorreo;
+    private javax.swing.JTextField NuevoNombre;
+    private javax.swing.JTextField NuevoUsuario;
+    private javax.swing.JLabel UsuarioLabel;
+    private javax.swing.JButton VerPrecio1;
+    private javax.swing.JButton VerPrecio2;
+    private javax.swing.JButton VerPrecio3;
+    private javax.swing.JButton VerPrecio4;
+    private javax.swing.JButton VerPrecio5;
+    private javax.swing.JButton VerPrecio6;
     private javax.swing.JTable compraUsuarioTabla;
     private javax.swing.JPanel historial;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1069,29 +1459,38 @@ public class pruebaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1103,6 +1502,7 @@ public class pruebaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1125,34 +1525,25 @@ public class pruebaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel whiback;
     // End of variables declaration//GEN-END:variables
 
+    public void cargarComprasEnTabla(String identificacionUsuario) throws SQLException {
+        carroDAO carroD = new carroDAO();
+        List<Compra> listaCompras = carroD.obtenerComprasPorUsuario(identificacionUsuario);
 
-    
-      public void cargarComprasEnTabla(String identificacionUsuario) throws SQLException {
-        carroDAO carroD = new carroDAO(); 
-        List<Compra> listaCompras = carroD.obtenerComprasPorUsuario(identificacionUsuario); 
-
-        DefaultTableModel model = (DefaultTableModel) compraUsuarioTabla.getModel(); 
-        model.setRowCount(0); 
+        DefaultTableModel model = (DefaultTableModel) compraUsuarioTabla.getModel();
+        model.setRowCount(0);
 
         for (Compra compra : listaCompras) {
-        model.addRow(new Object[]{
-        compra.getNombreAuto(),
-        compra.getPlaca(),
-        compra.getPrecioAuto(),
-        compra.getFechaCompra(),
-        compra.getTotal(),
-        compra.getCantidad(),
-        compra.getNombreUsuario(),
-        compra.getApellidoUsuario(),
-        compra.getIdentificacionUsuario()
+            model.addRow(new Object[]{
+                compra.getNombreAuto(),
+                compra.getPlaca(),
+                compra.getPrecioAuto(),
+                compra.getFechaCompra(),
+                compra.getTotal(),
+                compra.getCantidad(),
+                compra.getNombreUsuario(),
+                compra.getApellidoUsuario(),
+                compra.getIdentificacionUsuario()
             });
         }
     }
 }
-
-
-
-
-
-
-

@@ -95,6 +95,27 @@ public class carsController {
          con.close();
          return precio;
     }
+     
+    public double obtenerPrecioCarroDesdeBDPorModelo(String modeloCarro) throws SQLException {
+    double precio = 0.0;
+
+    
+    String query = "SELECT precio FROM autos WHERE modelo = ?"; 
+    try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost/inventario_autos", "root", "");
+         PreparedStatement ps = con.prepareStatement(query)) {
+
+        ps.setString(1, modeloCarro);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                precio = rs.getDouble("precio");
+            }
+        }
+    }
+
+    return precio; 
+}
+     
+     
 }
       
        

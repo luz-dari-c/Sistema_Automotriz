@@ -50,4 +50,34 @@ public class UsuarioDao {
         // Este método ya no es necesario con la implementación de getUsuario
         return getUsuario(username, password) != null;
     }
+    
+    public usuarios obtenerInformacionPorUsuario(String identificacionUsuario) throws SQLException {
+        String query = """
+            SELECT id, nombre, apellido, identificacion, usuario, correo_electronico
+            FROM usuarios
+            WHERE identificacion = ?
+        """;
+
+        try (Connection con = connect(); PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, identificacionUsuario);  // Usamos la identificación del usuario para buscar
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String usuario = rs.getString("usuario");
+                String correo = rs.getString("correo_electronico");
+
+                // Crea y retorna un objeto 'usuarios' con los datos obtenidos
+                return new usuarios(id, nombre, apellido, identificacionUsuario, usuario, null, correo);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener la información del usuario: " + e.getMessage());
+            throw e;
+        }
+
+        return null; // Si no se encuentra el usuario, retorna null
+    }
 }
