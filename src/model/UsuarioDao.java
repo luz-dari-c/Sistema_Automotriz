@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
-public class UsuarioDao {
+public class UsuarioDAO {
     
     private Connection connect() {
         Connection conn = null;
@@ -22,7 +22,7 @@ public class UsuarioDao {
         return conn;
     }
 
-   public usuarios getUsuario(String username, String password) {
+   public Usuario getUsuario(String username, String password) {
     String sql = "SELECT id, nombre, apellido, identificacion, usuario, contraseña, correo_electronico FROM usuarios WHERE usuario = ? AND contraseña = ?";  
     try (Connection conn = this.connect();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -38,7 +38,7 @@ public class UsuarioDao {
             String identificacion = rs.getString("identificacion");
             String correo = rs.getString("correo_electronico"); 
 
-            return new usuarios(id, nombre, apellidos, identificacion, username, password, correo);
+            return new Usuario(id, nombre, apellidos, identificacion, username, password, correo);
         }
     } catch (SQLException e) {
         System.out.println("Error al obtener el usuario: " + e.getMessage());

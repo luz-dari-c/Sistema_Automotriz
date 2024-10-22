@@ -1,5 +1,9 @@
 package vista;
 
+<<<<<<< HEAD
+=======
+import com.itextpdf.text.BaseColor;
+>>>>>>> modificarInformacion
 import javax.swing.JOptionPane;
 import model.Carro;
 import model.PlacaCarro;
@@ -11,7 +15,10 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+<<<<<<< HEAD
 import com.itextpdf.text.Image;
+=======
+>>>>>>> modificarInformacion
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
@@ -24,9 +31,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import model.usuarios;
+import model.Usuario;
 
 public class compraFase extends javax.swing.JFrame {
+<<<<<<< HEAD
 
     private String modeloCarro;
     private Carro carroSeleccionado;
@@ -35,6 +43,16 @@ public class compraFase extends javax.swing.JFrame {
     public compraFase() {
         setLocationRelativeTo(null);
         this.identificacionUsuario = identificacionUsuario;
+=======
+ private String modeloCarro;
+ private Carro carroSeleccionado;
+ private String identificacionUsuario;
+  
+    
+    public compraFase() {
+        setLocationRelativeTo(null); 
+        this.identificacionUsuario = identificacionUsuario; 
+>>>>>>> modificarInformacion
         initComponents();
 
         marcaLabel = new javax.swing.JLabel();
@@ -46,6 +64,7 @@ public class compraFase extends javax.swing.JFrame {
         cantidadLabel = new javax.swing.JLabel();
         precioLabel = new javax.swing.JLabel();
         placaLabel = new javax.swing.JLabel();
+<<<<<<< HEAD
 
         mostrarPlacaAleatoria();
 
@@ -59,14 +78,35 @@ public class compraFase extends javax.swing.JFrame {
         mostrarDatosCarro();
         mostrarPlacaAleatoria();
 
+=======
+        mostrarPlacaAleatoria(); 
+    }
+
+    public compraFase(Carro carro,String identificacionUsuario) {
+        initComponents(); 
+         setLocationRelativeTo(null); 
+       this.identificacionUsuario = identificacionUsuario;
+        this.carroSeleccionado = carro; 
+        mostrarDatosCarro();
+        mostrarPlacaAleatoria();
+        
+       
+>>>>>>> modificarInformacion
     }
 
     private void mostrarDatosCarro() {
 
         if (carroSeleccionado != null) {
+<<<<<<< HEAD
 
             modeloLabel.setText(carroSeleccionado.getModelo());
             añoLabel.setText(carroSeleccionado.getAño());
+=======
+          
+          
+            modeloLabel.setText(carroSeleccionado.getModelo()); 
+            añoLabel.setText(carroSeleccionado.getAño()); 
+>>>>>>> modificarInformacion
             double precio = carroSeleccionado.getPrecio();
             precioLabel.setText(String.format("%.2f", precio));
             colorLabel.setText(carroSeleccionado.getColor());
@@ -74,15 +114,25 @@ public class compraFase extends javax.swing.JFrame {
             fechaIngresooLabel.setText(carroSeleccionado.getFechaIngresoo());
             cantidadLabel.setText(String.valueOf(carroSeleccionado.getCantidad()));
             marcaLabel.setText(carroSeleccionado.getMarca());
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> modificarInformacion
             if (carroSeleccionado.getCantidad() == 0) {
                 pago.setEnabled(false);
             } else {
                 pago.setEnabled(true);
             }
+<<<<<<< HEAD
         }
     }
 
+=======
+        }   
+    }
+    
+>>>>>>> modificarInformacion
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -347,10 +397,74 @@ public class compraFase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoActionPerformed
+<<<<<<< HEAD
         try {
             if (dineroCliente.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor, ingrese un monto.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
+=======
+     try {
+        if (dineroCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un monto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        double dineroDisponible = Double.parseDouble(dineroCliente.getText());
+
+        if (carroSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado un carro.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        double precio = carroSeleccionado.getPrecio();
+        String dineroFormato = String.format("%.2f", dineroDisponible);
+        String precioFormato = String.format("%.2f", precio);
+
+     
+        JOptionPane.showMessageDialog(this, 
+            "Datos del carro seleccionado:\n" +
+            "Modelo: " + carroSeleccionado.getModelo() + "\n" +
+            "Marca: " + carroSeleccionado.getMarca() + "\n" +
+            "Cantidad disponible: " + carroSeleccionado.getCantidad() + "\n" +
+            "Precio: " + precioFormato + "\n" +
+            "Dinero disponible: " + dineroFormato, 
+            "Depuración", JOptionPane.INFORMATION_MESSAGE);
+
+        if (dineroDisponible < precio) {
+            JOptionPane.showMessageDialog(this, "El dinero ingresado no es suficiente para comprar este carro.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (dineroDisponible > precio) {
+            JOptionPane.showMessageDialog(this, "Ingrese el valor exacto.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+
+        if (dineroDisponible == precio) {
+            int idUsuario = Sesion.getUsuarioActual().getId(); 
+            Usuario user = Sesion.getUsuarioActual(); 
+            int idAuto = carroSeleccionado.getId(); 
+
+            carroDAO vc = new carroDAO();
+            
+            if (carroSeleccionado.getCantidad() > 0) {
+                vc.ventacarro(carroSeleccionado.getModelo(), precio, idUsuario, idAuto);
+
+               
+                int nuevaCantidad = carroSeleccionado.getCantidad() - 1;
+
+                boolean actualizado = vc.actualizarCantidadCarro(idAuto, nuevaCantidad);
+                
+                if (actualizado) {
+                    JOptionPane.showMessageDialog(this, "Compra realizada con éxito.");
+                  
+                    generarPDFFactura(carroSeleccionado, user, dineroFormato, precioFormato);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al actualizar la cantidad del carro.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya no hay unidades disponibles.");
+>>>>>>> modificarInformacion
             }
 
             double dineroDisponible = Double.parseDouble(dineroCliente.getText());
@@ -430,6 +544,7 @@ public class compraFase extends javax.swing.JFrame {
 
     }//GEN-LAST:event_dineroClienteActionPerformed
 
+<<<<<<< HEAD
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
 
         try {
@@ -441,8 +556,23 @@ public class compraFase extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_regresarActionPerformed
 
+=======
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
+    try {
+        PrincipalUsuario dashboard = new PrincipalUsuario(identificacionUsuario);
+        dashboard.setVisible(true);
+        this.dispose();
+    } catch (SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error al cargar el panel principal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    
+>>>>>>> modificarInformacion
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+     
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -465,7 +595,7 @@ public class compraFase extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new compraFase().setVisible(true);
@@ -512,6 +642,7 @@ public class compraFase extends javax.swing.JFrame {
         dineroCliente.setText("");
 
     }
+<<<<<<< HEAD
 
     private void mostrarPlacaAleatoria() {
         String placaGenerada = PlacaCarro.generarPlacaUnica();
@@ -520,6 +651,14 @@ public class compraFase extends javax.swing.JFrame {
 
    private void generarPDFFactura(Carro carr, usuarios user, String dineroCliente, String precioCarro) {
     Document document = new Document(PageSize.A4, 50, 50, 50, 50); // Márgenes más equilibrados
+=======
+        private void mostrarPlacaAleatoria() {
+        String placaGenerada = PlacaCarro.generarPlacaUnica(); 
+        placaLabel.setText(placaGenerada);
+    }
+    private void generarPDFFactura(Carro carr, Usuario user, String dineroCliente, String precioCarro) {
+    Document document = new Document();
+>>>>>>> modificarInformacion
     try {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Guardar Factura como");
@@ -530,6 +669,7 @@ public class compraFase extends javax.swing.JFrame {
             if (!filePath.endsWith(".pdf")) {
                 filePath += ".pdf";
             }
+<<<<<<< HEAD
 
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
             document.open();
@@ -573,13 +713,58 @@ public class compraFase extends javax.swing.JFrame {
             document.add(new Paragraph("\n"));
 
             // Título de la factura
+=======
+
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
+
+           
+            document.open();
+
+            
+            Font titleFont = new Font(Font.FontFamily.TIMES_ROMAN, 22, Font.BOLD, BaseColor.BLACK); // Título en negro
+            Font subTitleFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.DARK_GRAY); // Subtítulos en gris oscuro
+            Font bodyFont = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL, BaseColor.GRAY); // Texto en gris
+            Font footerFont = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.ITALIC, BaseColor.LIGHT_GRAY); // Pie de página en gris claro
+
+         
+            String fechaCompra = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+
+         
+            Rectangle rect = new Rectangle(577, 825, 18, 15); 
+            rect.enableBorderSide(Rectangle.BOX);
+            rect.setBorderWidth(2); 
+            rect.setBorderColor(BaseColor.DARK_GRAY);
+            writer.setBoxSize("borde", rect); 
+
+           
+            document.add(rect);
+
+         
+            Paragraph empresa = new Paragraph("VOLTRIX", titleFont);
+            empresa.setAlignment(Element.ALIGN_CENTER);
+            document.add(empresa);
+
+         
+            Paragraph fecha = new Paragraph("Fecha de Compra: " + fechaCompra, bodyFont);
+            fecha.setAlignment(Element.ALIGN_CENTER);
+            document.add(fecha);
+
+            document.add(new Paragraph("\n"));
+
+>>>>>>> modificarInformacion
             Paragraph title = new Paragraph("Factura de Compra", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
             title.setSpacingAfter(10f); // Espaciado para separar el título
             document.add(title);
+<<<<<<< HEAD
+=======
+
+            document.add(new Paragraph("\n"));
+>>>>>>> modificarInformacion
 
             // Tabla de detalles
             PdfPTable table = new PdfPTable(2);
+<<<<<<< HEAD
             table.setWidthPercentage(90); // Ancho del 90% de la página
             table.setHorizontalAlignment(Element.ALIGN_CENTER); // Centrar la tabla
 
@@ -620,6 +805,65 @@ public class compraFase extends javax.swing.JFrame {
             document.add(thanksMessage);
 
             // Pie de página
+=======
+            table.setWidthPercentage(100);
+
+        
+            PdfPCell header1 = new PdfPCell(new Phrase("Campo", subTitleFont));
+            header1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            header1.setBorderColor(BaseColor.GRAY);
+            table.addCell(header1);
+
+            PdfPCell header2 = new PdfPCell(new Phrase("Detalles", subTitleFont));
+            header2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            header2.setBorderColor(BaseColor.GRAY);
+            table.addCell(header2);
+
+        
+            table.addCell(new Phrase("Modelo del Carro", bodyFont));
+            table.addCell(new Phrase(carr.getModelo(), bodyFont));
+
+            table.addCell(new Phrase("Marca", bodyFont));
+            table.addCell(new Phrase(carr.getMarca(), bodyFont));
+
+            String placaGenerada = placaLabel.getText();
+            table.addCell(new Phrase("Placa", bodyFont));
+            table.addCell(new Phrase(placaGenerada, bodyFont));
+
+            table.addCell(new Phrase("Color", bodyFont));
+            table.addCell(new Phrase(carr.getColor(), bodyFont));
+
+            table.addCell(new Phrase("Tipo de Motor", bodyFont));
+            table.addCell(new Phrase(carr.getTipoMotor(), bodyFont));
+
+            table.addCell(new Phrase("Precio", bodyFont));
+            table.addCell(new Phrase(precioCarro + " COP", bodyFont));
+
+            table.addCell(new Phrase("Nombre del Cliente", bodyFont));
+            table.addCell(new Phrase(user.getNombre() + " " + user.getApellidos(), bodyFont));
+
+            table.addCell(new Phrase("Identificación", bodyFont));
+            table.addCell(new Phrase(user.getIdentificacion(), bodyFont));
+
+            table.addCell(new Phrase("Correo Electrónico", bodyFont));
+            table.addCell(new Phrase(user.getCorreo(), bodyFont));
+
+            table.addCell(new Phrase("Dinero del Cliente", bodyFont));
+            table.addCell(new Phrase(dineroCliente + " USD", bodyFont));
+
+            document.add(table);
+
+            document.add(new Paragraph("\n\n"));
+
+          
+            Paragraph thanksMessage = new Paragraph("¡Gracias por su compra!", titleFont);
+            thanksMessage.setAlignment(Element.ALIGN_CENTER);
+            thanksMessage.setSpacingBefore(10f);
+            thanksMessage.setSpacingAfter(10f);
+            document.add(thanksMessage);
+
+           
+>>>>>>> modificarInformacion
             Paragraph footer = new Paragraph("VOLTRIX - Calidad y velocidad en cada auto", footerFont);
             footer.setAlignment(Element.ALIGN_CENTER);
             footer.setSpacingBefore(50f); // Espaciado antes del pie de página
@@ -637,6 +881,7 @@ public class compraFase extends javax.swing.JFrame {
     }
 }
 
+<<<<<<< HEAD
 // Método para añadir celdas de la tabla de manera elegante
 private void agregarCeldaTabla(PdfPTable table, String campo, String detalle, Font font) {
     PdfPCell campoCell = new PdfPCell(new Phrase(campo, font));
@@ -649,4 +894,6 @@ private void agregarCeldaTabla(PdfPTable table, String campo, String detalle, Fo
     detalleCell.setBorderColor(BaseColor.LIGHT_GRAY); // Color de borde suave
     table.addCell(detalleCell);
 }
+=======
+>>>>>>> modificarInformacion
 }

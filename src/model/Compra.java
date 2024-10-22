@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 public class Compra {
     private String nombreAuto;
     private BigDecimal precioAuto;
-   private Timestamp fechaCompra; 
+    private Timestamp fechaCompra; 
     private BigDecimal total;
     private int cantidad;
     private String nombreUsuario;  

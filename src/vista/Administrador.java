@@ -1,4 +1,3 @@
-
 package vista;
 
 import java.math.BigDecimal;
@@ -21,38 +20,40 @@ import model.carroDAO;
 
 public class Administrador extends javax.swing.JFrame {
 
+<<<<<<< HEAD
    
+=======
+>>>>>>> modificarInformacion
     public Administrador() throws SQLException {
         initComponents();
-         setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         cargarProfesoresEnTabla();
         iniciarOpciones();
         cargarComprasEnTabla();
- 
+
     }
 
     public void iniciarOpciones() {
         JMenuItem aumentar = new JMenuItem("Agregar cantidad");
         JMenuItem eliminar = new JMenuItem("Eliminar cantidad");
-     
+
         ppMenuTabla.add(aumentar);
         ppMenuTabla.add(eliminar);
 
         tablaAdministrador.setComponentPopupMenu(ppMenuTabla);
-   
+
         eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tablaAdministrador.getSelectedRow();
 
-                if (selectedRow != -1) { 
-                    
+                if (selectedRow != -1) {
+
                     String modelo = (String) tablaAdministrador.getValueAt(selectedRow, 1);
 
-                    
                     int confirm = JOptionPane.showConfirmDialog(null, "Seguro de que deseas disminuir la cantidad", "Confirmación", JOptionPane.YES_NO_OPTION);
                     if (confirm == JOptionPane.YES_OPTION) {
-                       
+
                         carroDAO crd = new carroDAO();
                         crd.disminuirCantidadCarro(modelo);
 
@@ -62,20 +63,19 @@ public class Administrador extends javax.swing.JFrame {
                 }
             }
         });
-       
-        aumentar.addActionListener(new ActionListener(){
-             @Override 
-             public void actionPerformed(ActionEvent e) {
+
+        aumentar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 int selectedRow = tablaAdministrador.getSelectedRow();
 
-                if (selectedRow != +1) { 
-                    
+                if (selectedRow != +1) {
+
                     String modelo = (String) tablaAdministrador.getValueAt(selectedRow, 1);
 
-                    
                     int confirm = JOptionPane.showConfirmDialog(null, "Seguro de que deseas aumentar la cantidad", "Confirmación", JOptionPane.YES_NO_OPTION);
                     if (confirm == JOptionPane.YES_OPTION) {
-                       
+
                         carroDAO crd = new carroDAO();
                         crd.aumentarCantidad(modelo);
 
@@ -84,12 +84,11 @@ public class Administrador extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Seleccione un carro al cual aumentar su cantidad.");
                 }
             }
-             
+
         });
-  
+
     }
-    
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,6 +132,14 @@ public class Administrador extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ventasTbla = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        imputPrecioModificar = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        imputModeloModificar = new javax.swing.JTextField();
+        modificarPrecioCarro = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         btn_4 = new javax.swing.JPanel();
@@ -442,6 +449,46 @@ public class Administrador extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar", venta);
 
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Ingrese el modelo para modificar precio de un automovil");
+        jPanel8.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 30));
+
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Precio nuevo");
+        jPanel8.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel8.add(imputPrecioModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, 40));
+
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("Modelo");
+        jPanel8.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jPanel8.add(imputModeloModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 210, 40));
+
+        modificarPrecioCarro.setText("Modificar precio");
+        modificarPrecioCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPrecioCarroActionPerformed(evt);
+            }
+        });
+        jPanel8.add(modificarPrecioCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Modificar", jPanel4);
+
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 860, 440));
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
@@ -644,6 +691,7 @@ public class Administrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void inputMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMarcaActionPerformed
 
     }//GEN-LAST:event_inputMarcaActionPerformed
@@ -749,13 +797,15 @@ public class Administrador extends javax.swing.JFrame {
         cD.eliminarAuto(inputPlacaAutoEliminar);
 
     }//GEN-LAST:event_eliminarCarroActionPerformed
+=======
+>>>>>>> modificarInformacion
 
     private void btn_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_4MouseClicked
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_btn_4MouseClicked
 
     private void btn_4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_4MousePressed
-        
+
     }//GEN-LAST:event_btn_4MousePressed
 
     private void btn_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_3MouseClicked
@@ -774,22 +824,14 @@ public class Administrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_1MousePressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        cargarProfesoresEnTabla();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
-
-    }//GEN-LAST:event_cantidadActionPerformed
-
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void vendidodopanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendidodopanelMouseClicked
-                                    
+
         jTabbedPane1.setSelectedIndex(3);
-                                     
+
 
     }//GEN-LAST:event_vendidodopanelMouseClicked
 
@@ -798,25 +840,154 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_vendidodopanelMouseEntered
 
     private void CierreSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreSesionActionPerformed
-      
-       int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION); 
-        
-        if (confirm ==JOptionPane.YES_OPTION) {
-              
-             this.dispose();
-            
+
+        int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+
+            this.dispose();
+
             InicioSesion is = new InicioSesion();
             is.setVisible(true);
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Cierre de sesión cancelado.");
-       
-    }                       
+
+        }
     }//GEN-LAST:event_CierreSesionActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void eliminarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCarroActionPerformed
+
+        String inputPlacaAutoEliminar = InputPlacaEliminar.getText();
+
+        if (inputPlacaAutoEliminar.isEmpty()) {
+            JOptionPane.showInternalMessageDialog(null, "Por favor, llene el campo");
+
+        }
+        carroDAO cD = new carroDAO();
+        cD.eliminarAuto(inputPlacaAutoEliminar);
+    }//GEN-LAST:event_eliminarCarroActionPerformed
+
+    private void InputPlacaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputPlacaEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputPlacaEliminarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        cargarProfesoresEnTabla();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
+
+    }//GEN-LAST:event_cantidadActionPerformed
+
+    private void inputKilometrajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputKilometrajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputKilometrajeActionPerformed
+
+    private void inputColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputColorActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String marca = inputMarca.getText();
+        String cantidades = cantidad.getText();
+        int cantidadEntera = 0;
+
+        if (!cantidades.isEmpty() && cantidades.matches("\\d+")) {
+            cantidadEntera = Integer.parseInt(cantidades);
+
+            if (cantidadEntera < 1) {
+                JOptionPane.showMessageDialog(null, "Debe agregar al menos un carro.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (cantidadEntera > 50) {
+                JOptionPane.showMessageDialog(null, "Ha superado el limite de carros por agregar.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+            }
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
+        String modelo = inputModelo.getText();
+        String precioTexto = inputPrecio.getText();
+        String año = cantidad.getText();
+        String color = inputColor.getText();
+        String tipoMotor = inputTipoMotor.getText();
+        String fecha = inputFechaRegistro.getText();
+        String Kilometraje = inputKilometraje.getText();
+
+        PlacaCarro.cargarPlacasExistentes();
+
+        carsController controller = new carsController();
+
+        if (marca.isEmpty() || fecha.isEmpty() || precioTexto.isEmpty() || color.isEmpty()
+                || modelo.isEmpty() || Kilometraje.isEmpty() || tipoMotor.isEmpty() || año.isEmpty() || cantidades.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese todos los campos");
+            return;
+        }
+
+        BigDecimal precio;
+        try {
+
+            precio = new BigDecimal(precioTexto);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El precio debe ser un número válido");
+            return;
+        }
+
+        String nuevaPlaca = PlacaCarro.generarPlacaUnica();
+
+        boolean registrado = controller.registroCarro(marca, modelo, año, precioTexto, color, tipoMotor, fecha, Kilometraje, nuevaPlaca);
+
+        if (registrado) {
+            JOptionPane.showMessageDialog(this, "Carro añadido exitosamente con placa: " + nuevaPlaca);
+        } else {
+            JOptionPane.showMessageDialog(this, "El auto no se ha podido añadir, intentelo nuevamente");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void inputFechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFechaRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputFechaRegistroActionPerformed
+
+    private void inputPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputPrecioActionPerformed
+
+    private void inputModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputModeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputModeloActionPerformed
+
+    private void inputMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMarcaActionPerformed
+
+    }//GEN-LAST:event_inputMarcaActionPerformed
+
+    private void modificarPrecioCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPrecioCarroActionPerformed
+
+        String modelo = imputModeloModificar.getText().trim();
+        String nuevoPrecioTexto = imputPrecioModificar.getText().trim();
+
+        if (modelo.isEmpty() || nuevoPrecioTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el modelo del auto y el nuevo precio.");
+            return;
+        }
+
+        double nuevoPrecio;
+        try {
+            nuevoPrecio = Double.parseDouble(nuevoPrecioTexto);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El precio debe ser un número válido.");
+            return;
+
+        }
+
+        carroDAO modificador = new carroDAO();
+        modificador.modificarPrecioAuto(modelo, nuevoPrecio);
+
+
+    }//GEN-LAST:event_modificarPrecioCarroActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -863,6 +1034,8 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel btn_4;
     private javax.swing.JTextField cantidad;
     private javax.swing.JButton eliminarCarro;
+    private javax.swing.JTextField imputModeloModificar;
+    private javax.swing.JTextField imputPrecioModificar;
     private javax.swing.JPanel ind_1;
     private javax.swing.JPanel ind_3;
     private javax.swing.JPanel ind_4;
@@ -889,6 +1062,9 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -899,12 +1075,15 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton modificarPrecioCarro;
     private javax.swing.JPopupMenu ppMenuTabla;
     public javax.swing.JTable tablaAdministrador;
     private javax.swing.JLabel txtMarca;
@@ -929,7 +1108,7 @@ public class Administrador extends javax.swing.JFrame {
                 cars.getMarca(),
                 cars.getModelo(),
                 cars.getAño(),
-                formatoPrecio.format(cars.getPrecio()), 
+                formatoPrecio.format(cars.getPrecio()),
                 cars.getColor(),
                 cars.getTipoMotor(),
                 cars.getKilometraje(),
@@ -939,33 +1118,30 @@ public class Administrador extends javax.swing.JFrame {
 
             });
         }
-        
-        
-    }
-    
-   public void cargarComprasEnTabla() throws SQLException {
-    carroDAO carroD = new carroDAO(); 
-    List<Compra> listaCarros = carroD.obtenerAutosVendidos(); 
 
-    DefaultTableModel model = (DefaultTableModel) ventasTbla.getModel(); 
-    model.setRowCount(0); 
-
-  
-    for (Compra compra : listaCarros) {
-        model.addRow(new Object[]{
-            
-            compra.getNombreAuto(),
-            compra.getPrecioAuto(),
-            compra.getPlaca(),
-            compra.getFechaCompra(),
-            compra.getTotal(),
-            compra.getCantidad(),
-            compra.getNombreUsuario(),
-            compra.getApellidoUsuario(),
-            compra.getIdentificacionUsuario()
-          
-        });
     }
-}
+
+    public void cargarComprasEnTabla() throws SQLException {
+        carroDAO carroD = new carroDAO();
+        List<Compra> listaCarros = carroD.obtenerAutosVendidos();
+
+        DefaultTableModel model = (DefaultTableModel) ventasTbla.getModel();
+        model.setRowCount(0);
+
+        for (Compra compra : listaCarros) {
+            model.addRow(new Object[]{
+                compra.getNombreAuto(),
+                compra.getPrecioAuto(),
+                compra.getPlaca(),
+                compra.getFechaCompra(),
+                compra.getTotal(),
+                compra.getCantidad(),
+                compra.getNombreUsuario(),
+                compra.getApellidoUsuario(),
+                compra.getIdentificacionUsuario()
+
+            });
+        }
+    }
 
 }

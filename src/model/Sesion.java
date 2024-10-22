@@ -3,13 +3,13 @@ package model;
 
 
 public class Sesion {
-    private static usuarios usuarioActual; 
+    private static Usuario usuarioActual; 
 
-    public static void iniciarSesion(usuarios usuario) {
+    public static void iniciarSesion(Usuario usuario) {
         usuarioActual = usuario; 
     }
 
-    public static usuarios getUsuarioActual() {
+    public static Usuario getUsuarioActual() {
         return usuarioActual; 
     }
 

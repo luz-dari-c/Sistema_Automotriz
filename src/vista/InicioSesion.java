@@ -7,9 +7,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Sesion;
+<<<<<<< HEAD
 import model.UsuarioDao;
 import sombra.textoSombra;
 import model.usuarios;
+=======
+import sombra.textoSombra;
+import model.UsuarioDAO;
+import model.Usuario;
+>>>>>>> modificarInformacion
 
 
 
@@ -25,7 +31,11 @@ public class InicioSesion extends javax.swing.JFrame {
 
     }
 
+<<<<<<< HEAD
    
+=======
+  
+>>>>>>> modificarInformacion
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -243,8 +253,13 @@ public class InicioSesion extends javax.swing.JFrame {
     String username = txtuser.getText();
     String password = new String(txtpassword.getPassword());
 
+<<<<<<< HEAD
     UsuarioDao userDao = new UsuarioDao();   
     usuarios usuarioActual = userDao.getUsuario(username, password); 
+=======
+    UsuarioDAO userDao = new UsuarioDAO();   
+    Usuario usuarioActual = userDao.getUsuario(username, password); // Obtén el usuario
+>>>>>>> modificarInformacion
 
     if (username.equals(usuarioAdmin) && password.equals(contraseñaAdmin)) {
       try {
@@ -268,7 +283,11 @@ public class InicioSesion extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
+<<<<<<< HEAD
                     new Cliente(identificacionUsuario).setVisible(true); 
+=======
+                    new PrincipalUsuario(identificacionUsuario).setVisible(true); // Pasa la identificación
+>>>>>>> modificarInformacion
                 } catch (SQLException ex) {
                     Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
                 }

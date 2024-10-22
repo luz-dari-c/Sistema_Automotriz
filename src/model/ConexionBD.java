@@ -26,7 +26,6 @@ public class ConexionBD {
         return con;
     }
     
-    // Método adicional para verificar la conexión
     public static boolean verificarConexion() {
         try (Connection con = conectar()) {
             return con != null;

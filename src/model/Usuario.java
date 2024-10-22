@@ -1,6 +1,10 @@
 package model;
 
+<<<<<<< HEAD:src/model/usuarios.java
 public class usuarios {
+=======
+public class Usuario {
+>>>>>>> modificarInformacion:src/model/Usuario.java
     private int id; 
     private String nombre;
     private String apellidos;
@@ -9,7 +13,11 @@ public class usuarios {
     private String contraseña;
     private String correo;
 
+<<<<<<< HEAD:src/model/usuarios.java
     public usuarios(int id, String nombre, String apellidos, String identificacion, String user, String contraseña, String correo) {
+=======
+    public Usuario(int id, String nombre, String apellidos, String identificacion, String user, String contraseña, String correo) {
+>>>>>>> modificarInformacion:src/model/Usuario.java
         this.id = id; 
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -19,6 +27,10 @@ public class usuarios {
         this.correo = correo;
     }
 
+<<<<<<< HEAD:src/model/usuarios.java
+=======
+   
+>>>>>>> modificarInformacion:src/model/Usuario.java
     public int getId() {
         return id;
     }
